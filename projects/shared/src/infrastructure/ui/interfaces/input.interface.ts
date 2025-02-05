@@ -5,6 +5,8 @@ export interface IInput {
     placeholder: string,
     type: string,
     error?: string,
+    icon?: string,
+    size?: string,
     formControlName: string,
     required?: boolean | true,
     disabled?: boolean | false

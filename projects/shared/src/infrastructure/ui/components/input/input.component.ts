@@ -2,10 +2,11 @@ import { Component, input, OnChanges, output, SimpleChanges } from '@angular/cor
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { IInput } from '../../interfaces/input.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-input',
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss'
 })
