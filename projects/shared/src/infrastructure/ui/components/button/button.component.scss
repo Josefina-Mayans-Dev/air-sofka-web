@@ -1,0 +1,48 @@
+@use "sass:color";
+
+.button-content {
+    display: block;
+
+    &__button {
+        padding: 0;
+        height: 46px;
+        padding: 8px 16px;
+        width: 100%;
+        border: 1px solid;
+        border-radius: 14px;
+        font-size: 1rem;
+        min-width: 200px;
+        font-weight: 700;
+        min-height: 30px;
+        transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out;
+
+        &--light {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+    
+        &--light:hover {
+            background: #00000011;
+        }
+
+        &--dark {
+            background: #2d69e1;
+            border: transparent;
+            color: #fff;
+        }
+
+        &--dark:hover {
+            background-color: color.adjust(#2d69e1, $lightness: -5%);
+        }
+
+        &--large {
+            height: 62px;
+        }
+
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+}

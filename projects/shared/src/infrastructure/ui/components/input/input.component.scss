@@ -1,0 +1,61 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.input-content {
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: 24px 10px 6px 10px;
+    border: 0px solid transparent;
+    border-bottom: 1px solid #8a8a8aaf;
+    outline: none;
+    font-size: .875rem;
+    transition: border-color 0.3s;
+    background-color: variables.$white-color;
+    color: variables.$black-color;
+
+    &:focus {
+      border-color: variables.$primary-color;
+    }
+
+    &:hover {
+      border-color: variables.$primary-color;
+    }
+
+    &:focus + label,
+    &:not(:placeholder-shown) + label,
+    &:valid + label {
+      top: 4px;
+      font-size: .875rem;
+      color: variables.$text-color;
+    }
+  }
+
+  &__float-label {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    font-size: 16px;
+    color: variables.$text-color-secondary;
+    pointer-events: none;
+    transition: all 0.3s;
+    padding: 0;
+  }
+
+  &__input-icon {
+    position: absolute;
+    top: 13px;
+    right: 8px;
+  }
+
+  &__error-message {
+    color: variables.$error-color;
+    font-size: 12px;
+    padding: 2px 8px 2px 8px;
+    border-color: variables.$error-color;
+  }
+
+  .ng-invalid.ng-touched {
+      border-color: variables.$error-color;
+  }
+}

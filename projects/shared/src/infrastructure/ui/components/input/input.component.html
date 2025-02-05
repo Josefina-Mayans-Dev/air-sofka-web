@@ -1,0 +1,27 @@
+<div class="input-content" [formGroup]="formGroup()!">
+
+    <input class="input-content__input" 
+    [id]="inputData()?.id"
+    [type]="inputData()?.type" 
+    [placeholder]="inputData()?.placeholder"
+    [formControlName]="inputData()?.formControlName ?? ''"
+    [required]="inputData()?.required ?? false"
+    [attr.aria-label]="inputData()?.label"
+    [attr.aria-required]="inputData()?.required ?? null">  
+    
+    @if (inputData()?.label) {
+        <label class="input-content__float-label" [for]="inputData()?.id">{{ inputData()?.label }}</label>
+    } 
+
+    @if (formGroup()!.get(inputData()!.formControlName)?.invalid &&
+        (formGroup()!.get(inputData()!.formControlName)?.dirty ||
+        formGroup()!.get(inputData()!.formControlName)?.touched)) {
+        <span class="input-content__input-icon">
+            <img src="assets/svgs/danger.svg" alt="input-icon" height="20px">
+        </span>
+
+        <span class="input-content__error-message">
+            {{ inputData()?.error }}
+        </span>
+    }
+</div>
