@@ -1,0 +1,13 @@
+<div class="button-content">
+    <button role="button" class="button-content__button"
+        [ngClass]="{'button-content__button--large': buttonData()?.size == 'large',
+            'button-content__button--light': buttonData()?.class == 'light',
+            'button-content__button--dark': buttonData()?.class == 'dark'}"
+        [class]="'button-content__button--' + buttonData()?.class" 
+        [disabled]="buttonData()?.disabled"
+        (click)="clickedEvent()"
+        [attr.aria-label]="buttonData()?.label"
+        [attr.aria-disabled]="buttonData()?.disabled ? true : null">
+        {{ buttonData()?.label }} 
+    </button>
+</div>

@@ -95,6 +95,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/app/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/shared/src/infrastructure/ui/assets",
+                "output": "/assets"
               }
             ],
             "styles": [
