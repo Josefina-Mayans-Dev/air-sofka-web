@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="form">
+  <div>
+    <app-input
+      [inputData]="originInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
+  </div>
+  <div>
+    <app-input
+      [inputData]="destinationInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
+  </div>
+
+  <app-button
+    [buttonData]="submitButtonData"
+    (clickEvent)="submit()"
+  ></app-button>
+</form>
