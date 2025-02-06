@@ -1,0 +1,12 @@
+
+   <lib-stepper [steps]="stepLabels" (complete)="onComplete($event)" (stepChange)="onStepChange($event)" [isNextButtonDisabled]="isNextButtonDisabled">
+    @for (step of stepLabels; track $index) {
+          <lib-pasajeros-form 
+          [isFirst]="$index === 0" 
+          [hidden]="currentStepIndex !== $index"
+          (formValuesChange)="updateStep($event)" 
+          (formReady)="onFormReady($event, $index)"
+        >
+      </lib-pasajeros-form>
+    }
+  </lib-stepper>

@@ -1,0 +1,74 @@
+/* stepper.component.scss */
+$primary-color: #2962FF;
+$dark-blue: #003580;
+$light-gray: #F5F6FA;
+$border-color: #ccc;
+$white: #fff;
+$font-family: Roboto, sans-serif; // Ajusta la fuente si es diferente
+
+.stepper {
+  width: 50%;
+  background-color: $light-gray; // Fondo gris claro
+  border-radius: 8px; // Esquinas redondeadas
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); // Sombra ligera
+  padding: 20px;
+  font-family: $font-family;
+  margin: 0 auto;
+
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .step {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid $border-color;
+      cursor: pointer;
+      border-radius: 8px; // Esquinas redondeadas
+      background-color: $white; // Fondo blanco
+
+      &.active {
+        background-color: $primary-color; // Azul principal
+        color: $white;
+        border-color: $primary-color;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); // Sombra ligera
+      }
+    }
+  }
+
+  .content {
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px; // Esquinas redondeadas
+      background-color: $primary-color; // Azul principal
+      color: $white;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); // Sombra ligera
+      transition: background-color 0.2s ease; // Transición suave
+
+      &:hover {
+        background-color: darken($primary-color, 10%); // Oscurecer al hacer hover
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); // Sombra más pronunciada
+      }
+
+      &:disabled {
+        background-color: $border-color; // Color gris para deshabilitado
+        color: darken($border-color, 30%); // Oscurecer el texto
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+    }
+  }
+}

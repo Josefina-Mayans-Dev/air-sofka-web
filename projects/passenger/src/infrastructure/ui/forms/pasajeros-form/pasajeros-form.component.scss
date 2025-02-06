@@ -1,0 +1,334 @@
+
+
+// .pasajero-form { 
+//     font-family: Roboto, sans-serif;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 5px;
+//     width: 95%;
+//     margin: 0 auto;
+//     padding: 10px;
+//     box-sizing: border-box;
+  
+//     &__label {
+//       margin-bottom: 5px;
+//       display: block;
+//     }
+  
+//     &__input, 
+//     &__select { 
+//       padding: 5px;
+//       border: 1px solid #ccc;
+//       border-radius: 4px;
+//       font-size: 14px;
+//       width: 100%;
+//       box-sizing: border-box;
+//       font-family: Roboto, sans-serif;
+//       margin-bottom: 5px;
+//     }
+  
+//     &__select {
+//       width: auto;
+//       cursor: pointer;
+//     }
+  
+//     &__contacto {
+//       margin-top: 20px;
+//       border: 1px solid #ccc;
+//       padding: 10px;
+//       border-radius: 4px;
+//     }
+  
+//     &__contacto-title { 
+//       font-size: 1.2em;
+//       margin-bottom: 10px;
+//     }
+  
+//     &__checkbox-label {
+//       display: flex;
+//       align-items: center;
+//       margin-bottom: 5px;
+//     }
+  
+//     &__checkbox {
+//       margin-right: 5px;
+//     }
+  
+//     &__button { 
+//       background-color: #2962FF;
+//       color: white;
+//       padding: 5px 10px;
+//       border: none;
+//       border-radius: 4px;
+//       cursor: pointer;
+//       font-size: 14px;
+//       align-self: flex-start; 
+  
+//       &:disabled { 
+//         background-color: #ccc;
+//         color: #666;
+//         cursor: not-allowed;
+//       }
+//     }
+  
+//     &__error {
+//       color: red;
+//       font-size: 0.8em;
+//     }
+//   }
+
+/* pasajeros-form.component.scss */
+
+/* pasajeros-form.component.scss */
+
+// .pasajero-form {
+//     font-family: Roboto, sans-serif;
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+
+//     gap: 10px;
+
+//     width: 95%;
+//     margin: 0 auto;
+//     padding: 20px;
+//     box-sizing: border-box;
+//     background-color: #fff;
+
+//     border-radius: 10px;
+
+  
+//     & >
+//       *:nth-child(1) {
+//       grid-column: 1 / 3;
+//     }
+  
+//     & >
+//       *:nth-child(3) {
+//       grid-column: 1 / 3;
+//     }
+  
+//     & >
+//       *:nth-child(5) {
+//       grid-column: 1 / 3;
+//     }
+  
+//     & >
+//       *:nth-child(7) {
+//       grid-column: 1 / 3;
+//     }
+  
+//     & >
+//       *:nth-child(9) {
+//       grid-column: 1 / 3;
+//     }
+  
+    
+//     .terminos-condiciones {
+//       grid-column: 1 / 3;
+//       text-align: left;
+//     }
+  
+//     &__label {
+//       margin-bottom: 5px;
+//       display: block;
+//       font-size: 0.9em;
+     
+//       color: #555;
+  
+//     }
+  
+//     &__input,
+//     &__select {
+//       padding: 8px;
+//       border: 1px solid #ddd;
+    
+//       border-radius: 5px;
+     
+//       font-size: 14px;
+//       width: 300px;
+    
+//       box-sizing: border-box;
+//       font-family: Roboto, sans-serif;
+//       margin-bottom: 5px;
+//     }
+  
+//     &__select {
+//       width: auto;
+//       cursor: pointer;
+//     }
+  
+//     &__contacto {
+//       margin-top: 20px;
+//       border: 1px solid #eee;
+      
+//       padding: 20px;
+//       border-radius: 8px;
+//       grid-column: 1 / 3;
+ 
+//       background-color: #ffffff;
+    
+//     }
+  
+//     &__contacto-title {
+//       font-size: 1.7em;
+//       margin-bottom: 10px;
+//       color: #2962ff;
+//       font-weight: bold;
+//       margin-bottom: 25px;
+      
+//     }
+  
+//     &__checkbox-label {
+//       display: flex;
+//       align-items: center;
+//       margin-bottom: 5px;
+//       font-size: 0.9em;
+//     }
+  
+//     &__checkbox {
+//       margin-right: 5px;
+//     }
+  
+//     &__button {
+//       background-color: #2962FF;
+//       color: white;
+//       padding: 8px 15px;
+//       border: none;
+//       border-radius: 5px;
+//       cursor: pointer;
+//       font-size: 14px;
+//       align-self: flex-start;
+//       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     
+//       transition: background-color 0.2s ease;
+  
+//       &:hover {
+//         background-color: darken(#2962FF, 10%);
+//       }
+  
+//       &:disabled {
+//         background-color: #ccc;
+//         color: #666;
+//         cursor: not-allowed;
+//       }
+//     }
+  
+//     &__error {
+//       color: red;
+//       font-size: 0.8em;
+//     }
+//   }
+/* pasajeros-form.component.scss */
+.pasajero-form {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    /* Organizar los elementos en una columna */
+    gap: 10px;
+    /* Espaciado entre elementos */
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    /* Fondo blanco */
+    border-radius: 10px;
+    /* Bordes redondeados */
+  
+    /* Estilos para .form-group */
+    .form-group {
+      margin-bottom: 15px;
+      /* Espaciado entre grupos de campos */
+    }
+  
+    &__label {
+      margin-bottom: 5px;
+      display: block;
+      /* Mostrar la etiqueta en una nueva línea */
+      font-size: 0.9em;
+      /* Tamaño de fuente más pequeño */
+      color: #555;
+      /* Texto más claro */
+    }
+  
+    &__input,
+    &__select {
+      padding: 8px;
+      border: 1px solid #ddd;
+      /* Borde más delgado */
+      border-radius: 5px;
+      /* Esquinas más redondeadas */
+      font-size: 14px;
+      width: 300px;
+      /* No ocupar todo el ancho */
+      max-width: 300px;
+      /* Ancho máximo para no ocupar todo el espacio */
+      box-sizing: border-box;
+      font-family: Roboto, sans-serif;
+      margin-bottom: 5px;
+    }
+  
+    &__select {
+      width: auto;
+      cursor: pointer;
+    }
+  
+    &__contacto {
+      margin-top: 20px;
+      border: 1px solid #eee;
+      /* Borde más claro */
+      padding: 15px;
+      border-radius: 8px;
+      grid-column: 1 / 3;
+      /* Ocupar toda la fila */
+      background-color: #f9f9f9;
+      /* Fondo sutilmente gris */
+    }
+  
+    &__contacto-title {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      color: #333;
+      /* Texto más oscuro */
+    }
+  
+    &__checkbox-label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      font-size: 0.9em;
+    }
+  
+    &__checkbox {
+      margin-right: 5px;
+    }
+  
+    &__button {
+      background-color: #2962FF;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      align-self: flex-start;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      /* Sombra ligera */
+      transition: background-color 0.2s ease;
+  
+      &:hover {
+        background-color: darken(#2962FF, 10%);
+      }
+  
+      &:disabled {
+        background-color: #ccc;
+        color: #666;
+        cursor: not-allowed;
+      }
+    }
+  
+    &__error {
+      color: red;
+      font-size: 0.8em;
+    }
+  }
