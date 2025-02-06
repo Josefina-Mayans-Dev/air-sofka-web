@@ -6,12 +6,56 @@
       (outputData)="validateForm()"
     ></app-input>
   </div>
+
   <div>
     <app-input
       [inputData]="destinationInput"
       [formGroup]="form"
       (outputData)="validateForm()"
     ></app-input>
+  </div>
+
+  <div>
+    <app-input
+      [inputData]="priceInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
+  </div>
+
+  <div>
+    <select
+      name="plane"
+      id="plane"
+      required
+      (change)="validateForm()"
+      formControlName="plane"
+    >
+      <option value="" disabled selected>Select a plane</option>
+      @for (plane of planes(); track $index) {
+      <option [value]="plane.id">{{ plane.model }}</option>
+      }
+    </select>
+  </div>
+
+  <div>
+    <input
+      type="datetime-local"
+      name="departure"
+      id="departure"
+      formControlName="departure"
+      (change)="validateForm()"
+    />
+  </div>
+
+  <div>
+    <input
+      type="datetime-local"
+      name="arrival"
+      id="arrival"
+      formControlName="arrival"
+      (change)="validateForm()"
+    />
   </div>
 
   <app-button

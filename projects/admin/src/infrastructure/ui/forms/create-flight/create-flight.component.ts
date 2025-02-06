@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ButtonComponent, IButton, IInput, InputComponent } from 'shared';
+import { IPlane } from '../../../../domain/model/plane';
+import { FlightRequest } from '../../../../domain/model/flight.request';
 
 @Component({
   selector: 'lib-create-flight',
@@ -16,7 +18,8 @@ import { ButtonComponent, IButton, IInput, InputComponent } from 'shared';
 export class CreateFlightComponent {
   private fb = inject(FormBuilder);
 
-  onSubmit = output();
+  planes = input<IPlane[]>([]);
+  onSubmit = output<FlightRequest>();
 
   originInput: IInput = {
     id: 'origin',
@@ -40,9 +43,24 @@ export class CreateFlightComponent {
     disabled: false,
   };
 
+  priceInput: IInput = {
+    id: 'price',
+    label: 'Price',
+    placeholder: '',
+    value: '',
+    type: 'text',
+    formControlName: 'price',
+    required: true,
+    disabled: false,
+  };
+
   form: FormGroup = this.fb.group({
     origin: ['', [Validators.required]],
     destination: ['', [Validators.required]],
+    price: ['', [Validators.required]],
+    plane: ['', [Validators.required]],
+    departure: ['', [Validators.required]],
+    arrival: ['', [Validators.required]],
   });
 
   submitButtonData: IButton = {
@@ -57,7 +75,13 @@ export class CreateFlightComponent {
   }
 
   submit() {
-    console.log(this.form.get('origin')?.value)
-    this.onSubmit.emit();
+    this.onSubmit.emit({
+      origin: this.form.get('origin')!.value,
+      destination: this.form.get('destination')!.value,
+      price: this.form.get('price')!.value,
+      idPlane: this.form.get('plane')!.value,
+      departure: this.form.get('departure')!.value,
+      arrival: this.form.get('arrival')!.value,
+    });
   }
 }
