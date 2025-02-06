@@ -1,9 +1,27 @@
 <header class="header">
     <div class="header__content">
-        <menu class="header__content__right">
-            <li class="header__content__right__item">
-                
-            </li>
+        <div class="header__content__logos">
+            <a class="header__content__logos__icon header__content__logos__icon--left" href="#">
+                <img src="assets/svgs/air-europa-logo.svg" alt="Logo AirEuropa">
+            </a>
+            <a class="header__content__logos__icon header__content__logos__icon--rigth" href="#">
+                <img src="assets/svgs/skyteam.svg" alt="Logo SkyTeam">
+            </a>
+        </div>
+        
+        <menu class="header__content__options">
+            @for (item of itemsNavBar; track $index) {
+                <li [ngClass]="{'header__content__options__list': item.divider}">
+                    @if (item.type === 'button') {
+                        <app-button [buttonData]="item.buttonData" (clickEvent)="item.action ? executeAction(item.action) : null"></app-button>
+                    }
+                    @else if (item.type === 'input') {
+                        <span class="header__content__options__input">
+                            <app-input [formGroup]="item.formData" [inputData]="item.inputData"></app-input>
+                        </span>
+                    }
+                </li>
+            }
         </menu>
     </div>
 </header>
