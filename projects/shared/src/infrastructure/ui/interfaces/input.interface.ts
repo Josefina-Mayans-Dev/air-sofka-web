@@ -4,7 +4,6 @@ export interface IInput {
     value: string,
     placeholder: string,
     type: string,
-    error?: string,
     icon?: string,
     size?: string,
     formControlName: string,

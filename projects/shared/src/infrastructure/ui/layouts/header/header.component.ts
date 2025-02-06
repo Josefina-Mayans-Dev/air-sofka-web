@@ -1,9 +1,10 @@
 import { Component, inject, input, OnInit } from '@angular/core';
 import { ButtonComponent } from "../../components/button/button.component";
-import { IButton, IInput, Inav } from '../../interfaces';
+import { Inav } from '../../interfaces';
 import { InputComponent } from "../../components/input/input.component";
 import { FormControl, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-
+  private loginService = inject(LoginService);
+  
   itemsNavBar: Inav[] = [
     {
       type: 'button',
@@ -92,7 +94,11 @@ export class HeaderComponent implements OnInit {
   }
 
   executeAction(action: string) {
-    console.log(action);
+    switch (action) {
+      case 'login':
+        this.loginService.loginVisible(true);
+        break;
+    }
   }
 
 }

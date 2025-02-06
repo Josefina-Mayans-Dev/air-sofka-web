@@ -1,0 +1,51 @@
+@if(showComponent) {
+    <div class="login" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="login__backdrop"></div>
+        <div class="login__content">
+            <span class="login__content__close">
+                <svg width="28" height="28" (click)="onClose()">
+                    <use xlink:href="assets/svgs/close.svg#close"></use>
+                </svg>
+            </span>
+
+            <div class="login__form">
+                <h2>Login with your account Air Europa SUMA</h2>
+            
+                <form [formGroup]="form" aria-label="Data Form">
+                    <div class="login__form__field">
+                        <app-input [inputData]="emailInput" [formGroup]="form" (outputData)="validateForm()"></app-input>
+                    </div>
+                    <div class="login__form__field">
+                        <app-input [inputData]="passwordInput" [formGroup]="form" (outputData)="validateForm()"></app-input>
+                    </div>
+
+                    <a href="#" class="login__form__common">
+                        <span>Have you forgotten your password?</span>
+                    </a>
+
+                    <div class="login__form__remember">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember Sesion</label>
+                    </div>
+                    <app-button [buttonData]="submitButtonData" (clickEvent)="auth()"></app-button>
+                </form>
+            </div>
+    
+            <div class="login__registration">
+                <h3>Get the best of Air Europa with SUMA</h3>
+                <div class="login__registration__img">
+                    <img class="svg" alt="Picture of suma-login" id="suma-login" src="https://www.aireuropa.com/assets/svgs/suma-login.svg">
+                </div>
+                <div class="login__registration__details">
+                    <p> Become a member of the loyalty program 
+                        <strong> Air Europa</strong>
+                        save time and accumulate 
+                        <strong>Miles</strong>
+                        to redeem them later on your next flights. 
+                    </p>
+                    <app-button [buttonData]="buttonData"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

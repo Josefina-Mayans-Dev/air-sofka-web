@@ -19,12 +19,20 @@
         min-height: 30px;
         transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .25s ease-in-out;
 
+        &:hover {
+            cursor: pointer;
+        }
+
         &__icon {
 
             img {
                 height: 16px;
                 width: 16px;
             }
+        }
+
+        &--icon {
+            align-items: stretch;
         }
 
         &--light {
@@ -75,12 +83,16 @@
         }
 
         &--large {
-            height: 62px;
+            height: 54px;
         }
 
+        &--disabled  {
+            opacity: .5;
+
+            &:hover {
+                cursor: auto;
+            }
+        }
     }
 
-    button:hover {
-        cursor: pointer;
-    }
 }

@@ -38,18 +38,16 @@
     &:not(:placeholder-shown) + label,
     &:valid + label {
       top: 4px;
-      font-size: .875rem;
+      font-size: .75rem;
       color: variables.$text-color;
     }
   }
-
-  
 
   &__float-label {
     position: absolute;
     top: 12px;
     left: 10px;
-    font-size: 16px;
+    font-size: .875rem;
     color: variables.$text-color-secondary;
     pointer-events: none;
     transition: all 0.3s;
@@ -58,11 +56,16 @@
 
   &__input-icon {
     position: absolute;
-    top: 13px;
-    right: 8px;
+    top: 16px;
+    right: 10px;
 
     &--not-label {
       top: 2px;
+      right: 8px;
+    }
+
+    &--password {
+      cursor: pointer;
     }
   }
 

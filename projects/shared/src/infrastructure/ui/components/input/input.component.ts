@@ -15,6 +15,8 @@ export class InputComponent implements OnChanges{
   formGroup = input<FormGroup>();
   outputData = output<string>();
   formControl!: FormControl;
+  type = "password";
+  srcImagenPassword = "assets/svgs/eye-slash.svg";
 
   inputEvent(event: Event) {
     if(this.formGroup()) {
@@ -29,4 +31,8 @@ export class InputComponent implements OnChanges{
     }
   }
 
+  changeType() {
+    this.type = this.type === 'password' ? 'text' : 'password';
+    this.srcImagenPassword = this.type === 'password' ? "assets/svgs/eye-slash.svg" : "assets/svgs/eye.svg";
+  }
 }
