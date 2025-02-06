@@ -6,8 +6,6 @@ import { TokenService } from '../services/utils/token.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(TokenService);
-  // const loaderService = inject(LoaderService);
-  // const toastService = inject(ToastService);
   const router = inject(Router);
   let authReq = undefined;
 
@@ -21,10 +19,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authReq ?? req).pipe(
     catchError((error: HttpErrorResponse) => {
-      // loaderService.show(false);
       switch (error.status ) {
         case 400:
-          // toastService.emitToast("Error", error.error.message, "error", true);
           break;
 
         case 401:
