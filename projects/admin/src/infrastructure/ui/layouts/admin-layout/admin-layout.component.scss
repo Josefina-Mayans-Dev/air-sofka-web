@@ -36,7 +36,8 @@
       color: #2d69e1;
 
       &:hover {
-        color: color.adjust(#2d69e1, $lightness: -5%);
+        background: #2d69e1;
+        color: #fff;
       }
     }
 

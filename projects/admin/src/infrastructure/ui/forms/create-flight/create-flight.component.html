@@ -23,13 +23,15 @@
     ></app-input>
   </div>
 
-  <div>
+  <div class="form__group">
+    <label for="plane" class="form__label">Plane</label>
     <select
       name="plane"
       id="plane"
       required
       (change)="validateForm()"
       formControlName="plane"
+      class="form__select"
     >
       <option value="" disabled selected>Select a plane</option>
       @for (plane of planes(); track $index) {
