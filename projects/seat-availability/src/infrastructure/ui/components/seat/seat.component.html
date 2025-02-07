@@ -1,0 +1,9 @@
+<div class="seat" 
+     [class]="{
+       'available': seat.status === 'AVAILABLE',
+       'occupied': seat.status === 'OCCUPIED',
+       'selected': isSelected
+     }"
+     (click)="onSeatClick()">
+  {{ seat.row }}{{ seat.column }}
+</div>

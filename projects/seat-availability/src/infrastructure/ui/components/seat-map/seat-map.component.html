@@ -1,0 +1,12 @@
+<div class="seat-map-container">
+    <div class="seat-grid">
+        @for (seat of seats; track seat.id) {
+      <lib-seat
+                [seat]="seat"
+                [isSelected]="selectedSeats.has(seat.id)"
+                (seatClick)="seatSelected.emit(seat)">
+      </lib-seat>
+    }
+    </div>
+  </div>
+  

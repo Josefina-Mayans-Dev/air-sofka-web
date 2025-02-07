@@ -1,0 +1,29 @@
+.seat {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    
+    &.available {
+      background-color: #4CAF50;
+      color: white;
+      &:hover {
+        filter: brightness(90%);
+      }
+    }
+    
+    &.occupied {
+      background-color: #f44336;
+      color: white;
+      cursor: not-allowed;
+    }
+    
+    &.selected {
+      background-color: #2196F3;
+      color: white;
+      &:hover {
+        filter: brightness(90%);
+      }
+    }
+  }
