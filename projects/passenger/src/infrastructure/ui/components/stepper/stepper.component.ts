@@ -5,20 +5,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   selector: 'lib-stepper',
   imports: [CommonModule],
   templateUrl: './stepper.component.html',
-  styleUrl: './stepper.component.scss'
+  styleUrl: './stepper.component.scss',
 })
 export class StepperComponent implements OnInit {
-
   @Input() steps: string[] = [];
   @Input() isNextButtonDisabled: boolean = false;
   @Output() stepChange = new EventEmitter<number>();
   @Output() complete = new EventEmitter<any>();
-  @Output() formUpdated = new EventEmitter<any>();  // Nuevo Output para recibir valores
-  
+  @Output() formUpdated = new EventEmitter<any>();
+
   currentStepIndex: number = 0;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   goToPreviousStep(): void {
     if (this.currentStepIndex > 0) {
@@ -32,9 +30,7 @@ export class StepperComponent implements OnInit {
       this.currentStepIndex++;
       this.stepChange.emit(this.currentStepIndex);
     } else {
-      console.log("Formulario completado, y se ha mandado el valor");
-      this.complete.emit();  // Emitimos los datos completos
+      this.complete.emit(); // Emitimos los datos completos
     }
   }
-
 }

@@ -1,28 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'lib-pasajeros-form',
+  selector: 'lib-passenger-form',
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
-  templateUrl: './pasajeros-form.component.html',
-  styleUrl: './pasajeros-form.component.scss',
+  templateUrl: './passenger-form.component.html',
+  styleUrl: './passenger-form.component.scss',
 })
-export class PasajerosFormComponent implements OnInit, OnDestroy {
+export class PassengerFormComponent implements OnInit, OnDestroy {
   @Input() index: number = 0;
   @Input() isFirst: boolean = false;
-  @Output() formReady = new EventEmitter<FormGroup>(); // Emitir el formulario al estar listo
-  @Output() formValuesChange = new EventEmitter<{valid: boolean, values?: any}>(); // Emitir los valores al cambiar
+  @Output() formReady = new EventEmitter<FormGroup>();
+  @Output() formValuesChange = new EventEmitter<{valid: boolean, values?: any}>();
 
   pasajeroForm!: FormGroup;
-  private formSubscription: Subscription | undefined; // Para desuscribirse
+  private formSubscription: Subscription | undefined;
 
   constructor(private fb: FormBuilder) {}
 
@@ -59,12 +62,14 @@ export class PasajerosFormComponent implements OnInit, OnDestroy {
   }
 
   private addContactoValidators() {
-    this.pasajeroForm.controls['correo'].addValidators(Validators.required);
-    this.pasajeroForm.controls['correoConfirmar'].addValidators(Validators.required);
+    this.pasajeroForm.controls['correo'].addValidators([Validators.required, Validators.email]);
+    this.pasajeroForm.controls['correoConfirmar'].addValidators([Validators.required, Validators.email]);
     this.pasajeroForm.controls['prefijoTelefono'].addValidators(Validators.required);
-    this.pasajeroForm.controls['numeroTelefono'].addValidators(Validators.required);
+    this.pasajeroForm.controls['numeroTelefono'].addValidators([Validators.required, Validators.pattern('^[0-9]{10}$')]);
     this.pasajeroForm.controls['aceptaTerminos'].addValidators(Validators.required);
-    this.pasajeroForm.updateValueAndValidity(); //Recalcular las validaciones
+
+    this.pasajeroForm.setValidators(this.emailMatchValidator());
+    this.pasajeroForm.updateValueAndValidity();
   }
 
   private removeContactoValidators() {
@@ -75,5 +80,16 @@ export class PasajerosFormComponent implements OnInit, OnDestroy {
     this.pasajeroForm.controls['aceptaTerminos'].removeValidators(Validators.required);
     this.pasajeroForm.controls['aceptaTerminos'].setValue(false); // Si se oculta, se limpia el checkbox
     this.pasajeroForm.updateValueAndValidity();
+  }
+
+  emailMatchValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const email = control.get('correo')?.value;
+      const confirmEmail = control.get('correoConfirmar')?.value;
+  
+      return email && confirmEmail && email !== confirmEmail
+        ? { emailMismatch: true }
+        : null;
+    };
   }
 }
