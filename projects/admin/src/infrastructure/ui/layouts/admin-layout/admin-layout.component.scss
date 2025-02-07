@@ -1,0 +1,51 @@
+@use "sass:color";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  margin-bottom: 20px;
+
+  &__button {
+    text-decoration: none;
+    align-content: center;
+    text-align: center;
+    padding: 0;
+    height: 46px;
+    padding: 8px 16px;
+    border: 1px solid;
+    border-radius: 14px;
+    font-size: 1rem;
+    min-width: 107px;
+    font-weight: 700;
+    min-height: 30px;
+    transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out,
+      border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+
+    &--main {
+      background: #2d69e1;
+      border: transparent;
+      color: #fff;
+
+      &:hover {
+        background-color: color.adjust(#2d69e1, $lightness: -5%);
+      }
+    }
+
+    &--secondary {
+      color: #2d69e1;
+
+      &:hover {
+        color: color.adjust(#2d69e1, $lightness: -5%);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.main {
+  margin: 0 8px;
+}

@@ -48,8 +48,30 @@ export class CreateFlightComponent {
     label: 'Price',
     placeholder: '',
     value: '',
-    type: 'text',
+    type: 'number',
     formControlName: 'price',
+    required: true,
+    disabled: false,
+  };
+
+  departureInput: IInput = {
+    id: 'departure',
+    label: 'Departure',
+    placeholder: '',
+    value: '',
+    type: 'datetime-local',
+    formControlName: 'departure',
+    required: true,
+    disabled: false,
+  };
+
+  arrivalInput: IInput = {
+    id: 'arrival',
+    label: 'Arrival',
+    placeholder: '',
+    value: '',
+    type: 'datetime-local',
+    formControlName: 'arrival',
     required: true,
     disabled: false,
   };
