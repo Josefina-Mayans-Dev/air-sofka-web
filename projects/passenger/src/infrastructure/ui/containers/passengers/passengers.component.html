@@ -1,0 +1,14 @@
+
+   <lib-stepper [steps]="stepLabels" (complete)="onComplete($event)" (stepChange)="onStepChange($event)" [isNextButtonDisabled]="isNextButtonDisabled">
+    @for (step of stepLabels; track $index) {
+          <lib-passenger-form 
+          [isFirst]="$index === 0" 
+          [hidden]="currentStepIndex !== $index"
+          (formValuesChange)="updateStep($event)" 
+          (formReady)="onFormReady($event, $index)"
+        >
+      </lib-passenger-form>
+    }
+  </lib-stepper>
+  <p>{{contactSave$ | async | json}}</p>
+  <p>{{listPassengers$ | async | json}}</p>

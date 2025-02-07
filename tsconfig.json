@@ -21,6 +21,9 @@
       "auth": [
         "./dist/auth"
       ],
+      "passenger": [
+        "./dist/passenger"
+      ],
       "shared": [
         "./dist/shared"
       ]
