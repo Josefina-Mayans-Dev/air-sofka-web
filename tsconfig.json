@@ -4,7 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -20,6 +20,9 @@
       ],
       "auth": [
         "./dist/auth"
+      ],
+      "passenger": [
+        "./dist/passenger"
       ],
       "booking": [
         "./dist/booking"

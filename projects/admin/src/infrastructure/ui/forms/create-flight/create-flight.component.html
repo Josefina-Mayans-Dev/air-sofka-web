@@ -23,13 +23,15 @@
     ></app-input>
   </div>
 
-  <div>
+  <div class="form__group">
+    <label for="plane" class="form__label">Plane</label>
     <select
       name="plane"
       id="plane"
       required
       (change)="validateForm()"
       formControlName="plane"
+      class="form__select"
     >
       <option value="" disabled selected>Select a plane</option>
       @for (plane of planes(); track $index) {
@@ -39,23 +41,19 @@
   </div>
 
   <div>
-    <input
-      type="datetime-local"
-      name="departure"
-      id="departure"
-      formControlName="departure"
-      (change)="validateForm()"
-    />
+    <app-input
+      [inputData]="departureInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
   </div>
 
   <div>
-    <input
-      type="datetime-local"
-      name="arrival"
-      id="arrival"
-      formControlName="arrival"
-      (change)="validateForm()"
-    />
+    <app-input
+      [inputData]="arrivalInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
   </div>
 
   <app-button

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { RouterOutlet } from '@angular/router';
-import { ModalComponent } from "../../components/modal/modal.component";
-import { LoginComponent } from "../../forms/login/login.component";
+import { LoginComponent } from "../../containers/login/login.component";
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'lib-default-layout',
-  imports: [HeaderComponent, RouterOutlet, ModalComponent, LoginComponent],
+  imports: [HeaderComponent, RouterOutlet, LoginComponent],
   templateUrl: './default-layout.component.html',
   styleUrl: './default-layout.component.scss'
 })

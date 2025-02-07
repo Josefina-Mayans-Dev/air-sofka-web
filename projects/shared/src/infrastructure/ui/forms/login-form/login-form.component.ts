@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit, output } from '@angular/core';
 import { LoginService } from '../../../services';
 import { ButtonComponent } from "../../components/button/button.component";
 import { IButton, IInput } from '../../interfaces';
@@ -6,12 +6,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { InputComponent } from "../../components/input/input.component";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-form',
   imports: [ButtonComponent, FormsModule, ReactiveFormsModule, InputComponent],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './login-form.component.html',
+  styleUrl: './login-form.component.scss'
 })
-export class LoginComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
+  submit = output<FormGroup>();
   private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
   showComponent = false;
@@ -72,8 +73,8 @@ export class LoginComponent implements OnInit {
     this.form.reset();
   }
 
-  auth(){
-    console.log(this.form.value);
+  submitForm() {
+    this.submit.emit(this.form.getRawValue());
   }
 
 }
