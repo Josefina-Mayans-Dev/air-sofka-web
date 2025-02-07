@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { LoginFormComponent } from "../../forms/login-form/login-form.component";
 import { AuthUserUseCase } from '../../../../application/auth-user.usecase';
 import { Subject } from 'rxjs';
-import { FormGroup } from '@angular/forms';
 import { TokenService } from '../../../services';
+import { IAuthRequest } from '../../../../domain/model/auth-request.model';
 
 @Component({
   selector: 'lib-login',
@@ -14,7 +14,6 @@ import { TokenService } from '../../../services';
 export class LoginComponent implements OnInit {
   private readonly _useCase = inject(AuthUserUseCase);
   private tokenService = inject(TokenService);
-  private authvalidate$ = new Subject<void>();
   renderLogin = false;
 
   ngOnInit(): void {
@@ -25,14 +24,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this._useCase.destroySubscriptions();
-
-    this.authvalidate$.next();
-    this.authvalidate$.complete();
+    !this.tokenService.isAuthenticated() && this._useCase.destroySubscriptions();
   }
 
-  auth(authForm: FormGroup) {
-    this._useCase.execute(authForm.getRawValue())
+  auth(authForm: any) {
+    this._useCase.execute(authForm as IAuthRequest);
   }
 
 }
