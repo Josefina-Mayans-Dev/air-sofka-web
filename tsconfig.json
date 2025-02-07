@@ -21,6 +21,9 @@
       "auth": [
         "./dist/auth"
       ],
+      "booking": [
+        "./dist/booking"
+      ],
       "shared": [
         "./dist/shared"
       ]

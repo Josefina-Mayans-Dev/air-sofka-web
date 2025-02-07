@@ -18,7 +18,7 @@ export class ButtonComponent implements OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    debugger
+    //debugger
     if(changes['buttonData'] && this.buttonData()?.disabled) {
       this.buttonData()!.disabled = this.buttonData()!.disabled;
     }

@@ -10,6 +10,10 @@ export const routes: Routes = [
         loadChildren: () => import('admin').then(m => m.adminRoutes)
     },
     {
+        path: 'booking',
+        loadChildren: () => import('booking').then(m => m.bookingRoutes)
+    },
+    {
         path: "**",
         redirectTo: ""
     }
