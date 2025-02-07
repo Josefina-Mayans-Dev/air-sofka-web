@@ -1,0 +1,18 @@
+<div class="price-breakdown">
+    <h2 class="price-breakdown__title">{{ title() }}</h2>
+    <div class="price-breakdown__separator"></div>
+  
+    <div class="price-breakdown__details">
+      @for (detail of details(); track detail) {
+        <div class="price-breakdown__item">
+          <span class="price-breakdown__label">{{ detail.label }}</span>
+          <span class="price-breakdown__amount">{{ detail.amount | number: '1.2-2' }} {{ currency() }}</span>
+        </div>
+      }
+    </div>
+  
+    <div class="price-breakdown__total">
+      <span class="price-breakdown__label">Total Price</span>
+      <span class="price-breakdown__amount">{{ totalPrice() | number: '1.2-2' }} {{ currency() }}</span>
+    </div>
+  </div>

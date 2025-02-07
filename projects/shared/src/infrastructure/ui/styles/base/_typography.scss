@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+
+@font-face {
+    font-family: "Lato";
+    src: url("../../assets/fonts/lato/lato-regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "AeRadar";
+    src: url("../../assets/fonts/ae-radar/aeradar-bold.woff2") format("woff2");
+}
+
+* {
+    font-family: Lato,-apple-system,blinkmacsystemfont,Segoe UI,Roboto,Helvetica Neue,arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,icomoon;
+}
