@@ -1,0 +1,7 @@
+[
+    { "id":1, "number":"1A", "row": 1, "column": "A", "status": "available", "type": "first", "price": 20, "idFlight": "LA104" },
+    { "id":2, "number":"1B", "row": 1, "column": "B", "status": "available", "type": "business", "price": 10, "idFlight": "LA104" },
+    { "id":3, "number":"1C", "row": 1, "column": "C", "status": "occupied", "type": "business", "price": 10, "idFlight": "AF208" },
+    { "id":4, "number":"1D", "row": 1, "column": "D", "status": "available", "type": "economy", "price": 0, "idFlight": "LA104" },
+    { "id":5, "number":"2A", "row": 2, "column": "A", "status": "occupied", "type": "economy", "price": 0, "idFlight": "AF208" }
+  ]

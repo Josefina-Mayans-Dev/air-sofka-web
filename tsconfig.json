@@ -18,6 +18,9 @@
       "auth": [
         "./dist/auth"
       ],
+      "seat-availability": [
+        "./dist/seat-availability"
+      ],
       "shared": [
         "./dist/shared"
       ]
