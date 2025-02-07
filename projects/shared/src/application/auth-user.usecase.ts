@@ -40,9 +40,10 @@ export class AuthUserUseCase {
                 if (result!.token) {
                     this._state.users.auth.set(result);
                     if (result?.token) {
-                      localStorage.setItem('email', user.email);
+                      localStorage.setItem('email', result.email);
+                      localStorage.setItem('role', result.role);
                       this.tokenService.handleToken(result.token);
-                      this.router.navigate(['']);
+                      this.router.navigate(['/admin']);
                     }
                 }
             })

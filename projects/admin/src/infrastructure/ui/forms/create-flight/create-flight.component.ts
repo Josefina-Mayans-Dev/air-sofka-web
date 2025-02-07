@@ -1,4 +1,11 @@
-import { Component, inject, input, output } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  input,
+  OnInit,
+  output,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -20,6 +27,13 @@ export class CreateFlightComponent {
 
   planes = input<IPlane[]>([]);
   onSubmit = output<FlightRequest>();
+
+  options = computed(() => {
+    return this.planes().map((plane) => ({
+      value: plane.id,
+      option: plane.model,
+    }));
+  });
 
   originInput: IInput = {
     id: 'origin',
@@ -48,8 +62,30 @@ export class CreateFlightComponent {
     label: 'Price',
     placeholder: '',
     value: '',
-    type: 'text',
+    type: 'number',
     formControlName: 'price',
+    required: true,
+    disabled: false,
+  };
+
+  departureInput: IInput = {
+    id: 'departure',
+    label: 'Departure',
+    placeholder: '',
+    value: '',
+    type: 'datetime-local',
+    formControlName: 'departure',
+    required: true,
+    disabled: false,
+  };
+
+  arrivalInput: IInput = {
+    id: 'arrival',
+    label: 'Arrival',
+    placeholder: '',
+    value: '',
+    type: 'datetime-local',
+    formControlName: 'arrival',
     required: true,
     disabled: false,
   };
