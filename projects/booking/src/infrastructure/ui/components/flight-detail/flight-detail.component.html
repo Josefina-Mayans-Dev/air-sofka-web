@@ -1,0 +1,22 @@
+<div class="flight-detail">
+    <div class="flight-detail__header">
+      <span class="flight-detail__label">{{ segmentLabel() }}</span>
+      <span class="flight-detail__date">{{ date() }}</span>
+    </div>
+  
+    <div class="flight-detail__times">
+      <div class="flight-detail__time">
+        <span class="flight-detail__airport">{{ flight().origin }}</span>
+        <span class="flight-detail__time-value">{{ flight().originTime }}</span>
+      </div>
+  
+      <div class="flight-detail__arrow">
+        <hr />
+      </div>
+  
+      <div class="flight-detail__time">
+        <span class="flight-detail__airport">{{ flight().destination }}</span>
+        <span class="flight-detail__time-value">{{ flight().destinationTime }}</span>
+      </div>
+    </div>
+  </div>

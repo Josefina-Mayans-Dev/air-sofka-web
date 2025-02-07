@@ -27,6 +27,9 @@
       "passenger": [
         "./dist/passenger"
       ],
+      "booking": [
+        "./dist/booking"
+      ],
       "shared": [
         "./dist/shared"
       ]

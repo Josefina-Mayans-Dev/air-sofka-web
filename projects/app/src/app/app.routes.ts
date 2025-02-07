@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadChildren: () => import('flight').then(m => m.flightRoutes)
     },
     {
+        path: 'booking',
+        loadChildren: () => import('booking').then(m => m.bookingRoutes)
+    },
+    {
         path: "**",
         redirectTo: ""
     }

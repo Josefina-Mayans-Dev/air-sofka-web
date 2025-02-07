@@ -1,0 +1,18 @@
+.total-price {
+  
+    background-color: #1e3a8a;
+    color: white;
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    &__label {
+      font-weight: bold;
+      font-size: 1.125rem;
+    }
+  
+    &__price {
+      font-size: 1.125rem;
+    }
+  }

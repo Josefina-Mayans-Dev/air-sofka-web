@@ -1,0 +1,24 @@
+<div class="passenger-card">
+  <div class="passenger-card__details">
+    <div class="passenger-card__icon">
+      <span>
+        <svg width="28" height="28">
+          <use xlink:href="assets/svgs/person-svgrepo-com.svg#person-adult"></use>
+        </svg>
+      </span>
+
+    </div>
+    <div class="passenger-card__info">
+      <h3 class="passenger-card__name">{{ name() }}</h3>
+      @if (email()) {
+      <p class="passenger-card__email">{{ email() }}</p>
+      }
+      @if (phone()) {
+      <p class="passenger-card__phone">{{ phone() }}</p>
+      }
+      @if (type()) {
+      <p class="passenger-card__type">{{ type() }}</p>
+      }
+    </div>
+  </div>
+</div>
