@@ -4,7 +4,8 @@ import { Inav } from '../../interfaces';
 import { InputComponent } from "../../components/input/input.component";
 import { FormControl, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LoginService } from '../../../services';
+import { LoginService, TokenService } from '../../../services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,8 @@ import { LoginService } from '../../../services';
 })
 export class HeaderComponent implements OnInit {
   private loginService = inject(LoginService);
+  private tokenService = inject(TokenService);
+  private router = inject(Router);
   
   itemsNavBar: Inav[] = [
     {
@@ -96,7 +99,7 @@ export class HeaderComponent implements OnInit {
   executeAction(action: string) {
     switch (action) {
       case 'login':
-        this.loginService.loginVisible(true);
+        this.tokenService.isAuthenticated() ? this.router.navigate(['/admin']): this.loginService.loginVisible(true);
         break;
     }
   }
