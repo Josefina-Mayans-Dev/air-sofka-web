@@ -6,3 +6,8 @@
     align-items: $align;
     gap: $gap;
 }
+
+@mixin width-global() {
+    max-width: variables.$max-width;
+    margin: 0 auto;
+}

@@ -23,7 +23,6 @@ export class CreateFlightContainerComponent implements OnInit {
     this._planesUseCase.planes$().subscribe({
       next: (response) => {
         this.planes = response;
-        console.log(response);
       },
     });
   }

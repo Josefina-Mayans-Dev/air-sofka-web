@@ -74,7 +74,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   submitForm() {
-    this.submit.emit(this.form);
+    this.submit.emit(this.form.getRawValue());
   }
 
 }

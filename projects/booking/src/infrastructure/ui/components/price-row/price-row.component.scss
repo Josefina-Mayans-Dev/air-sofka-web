@@ -1,0 +1,16 @@
+.price-row {
+  padding-left: 16px;
+  padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+  
+    &__label {
+      font-size: 1rem;
+    }
+  
+    &__price {
+      font-size: 1rem;
+    }
+  }

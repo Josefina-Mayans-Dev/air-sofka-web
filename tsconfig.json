@@ -21,6 +21,15 @@
       "auth": [
         "./dist/auth"
       ],
+      "flight": [
+        "./dist/flight"
+      ],
+      "passenger": [
+        "./dist/passenger"
+      ],
+      "booking": [
+        "./dist/booking"
+      ],
       "seat-availability": [
         "./dist/seat-availability"
       ],
