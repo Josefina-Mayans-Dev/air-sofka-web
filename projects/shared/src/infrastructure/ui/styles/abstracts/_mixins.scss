@@ -1,0 +1,8 @@
+@use './variables' as variables;
+
+@mixin content-flex($justify: start, $align: start, $gap: 0) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}

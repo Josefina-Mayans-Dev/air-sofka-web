@@ -95,6 +95,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/app/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/shared/src/infrastructure/ui/assets",
+                "output": "/assets"
               }
             ],
             "styles": [
@@ -164,6 +169,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "seat-availability": {
       "projectType": "library",
       "root": "projects/seat-availability",
@@ -181,6 +187,25 @@
             },
             "development": {
               "tsConfig": "projects/seat-availability/tsconfig.lib.json"
+=======
+    "admin": {
+      "projectType": "library",
+      "root": "projects/admin",
+      "sourceRoot": "projects/admin/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "projects/admin/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/admin/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/admin/tsconfig.lib.json"
+>>>>>>> 69dfd2146fd6202a17bb55b20144f01c6d7b7641
             }
           },
           "defaultConfiguration": "production"
@@ -188,7 +213,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+<<<<<<< HEAD
             "tsConfig": "projects/seat-availability/tsconfig.spec.json",
+=======
+            "tsConfig": "projects/admin/tsconfig.spec.json",
+>>>>>>> 69dfd2146fd6202a17bb55b20144f01c6d7b7641
             "polyfills": [
               "zone.js",
               "zone.js/testing"

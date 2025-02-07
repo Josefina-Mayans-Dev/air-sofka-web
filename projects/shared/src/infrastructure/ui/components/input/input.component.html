@@ -1,0 +1,55 @@
+<div class="input-content" [formGroup]="formGroup()!">
+
+    <input class="input-content__input" 
+    [ngClass]="{'input-content__input--not-label': !inputData()?.label,
+        'input-content__input--small': inputData()?.size == 'small'
+    }"
+    [id]="inputData()?.id"
+    [type]="inputData()?.type === 'password' ? type : inputData()?.type"
+    [placeholder]="inputData()?.placeholder"
+    [formControlName]="inputData()?.formControlName ?? ''"
+    [required]="inputData()?.required ?? false"
+    [attr.aria-label]="inputData()?.label"
+    [attr.aria-required]="inputData()?.required ?? null"
+    (keyup)="inputEvent($event)">
+    
+    @if (inputData()?.label) {
+        <label class="input-content__float-label" [for]="inputData()?.id">{{ inputData()?.label }}</label>
+    } 
+
+    @if (inputData()!.icon){
+        <span class="input-content__input-icon"
+            [ngClass]="{'input-content__input-icon--not-label': !inputData()?.label}">
+            <img [src]="inputData()!.icon" alt="input-icon" height="18px">
+        </span>
+    }
+
+    @if (inputData()?.type === 'password' && formGroup()?.valid) {
+        <span class="input-content__input-icon input-content__input-icon--password">
+            <img [src]="srcImagenPassword" alt="icon for show and hide password" height="18px" (click)="changeType()">
+        </span>
+    }
+
+    @if (!inputData()!.icon && formGroup()!.get(inputData()!.formControlName)?.invalid &&
+        (formGroup()!.get(inputData()!.formControlName)?.dirty ||
+        formGroup()!.get(inputData()!.formControlName)?.touched)) {
+
+        <span class="input-content__input-icon">
+            <img src="assets/svgs/danger.svg" alt="input-icon" height="16px">
+        </span>
+
+        @if (formGroup()!.get(inputData()!.formControlName)?.errors?.['required']) {
+            <span class="input-content__error-message">{{ inputData()?.label }} is required.</span>
+        } @if (formGroup()!.get(inputData()!.formControlName)?.errors?.['email']) {
+            <span class="input-content__error-message">Invalid email format.</span>
+        } @if (formGroup()!.get(inputData()!.formControlName)?.errors?.['maxlength']) {
+            <span class="input-content__error-message">{{ inputData()?.label }} must contain no more than
+              {{formGroup()!.get(inputData()!.formControlName)?.errors?.['maxlength'].requiredLength}}
+              of characters.</span>
+        } @if (formGroup()!.get(inputData()!.formControlName)?.errors?.['minlength']) {
+            <span class="input-content__error-message">{{ inputData()?.label }} must contain at least
+              {{formGroup()!.get(inputData()!.formControlName)?.errors?.['minlength'].requiredLength}}
+              of characters.</span>
+        }
+    }
+</div>
