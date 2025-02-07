@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card__details">
+    <div class="card__details__item">
+      <span class="card__details__item--label">Origen:</span>
+      <span>{{ flight().origin }}</span>
+    </div>
+
+    <div class="card__details__item">
+      <span class="card__details__item--label">Destino:</span>
+      <span>{{ flight().destination }}</span>
+    </div>
+
+    <div class="card__details__item">
+      <span class="card__details__item--label">Salida:</span>
+      <span>{{ flight().departure | date : "short" }}</span>
+    </div>
+
+    <div class="card__details__item">
+      <span class="card__details__item--label">Llegada:</span>
+      <span>{{ flight().arrival | date : "short" }}</span>
+    </div>
+  </div>
+</div>
