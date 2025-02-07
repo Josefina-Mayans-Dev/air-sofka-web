@@ -1,20 +1,16 @@
 .booking-resume-layout {
+  background-color: #f8f9fa;
     display: flex;
     height: 100vh;
+    margin: 0 auto;
+    justify-content: space-between;
   
     &__flights {
-      flex: 1;
-      display: grid;
-      justify-content: center;
-      align-items: center;
+     
     }
   
     &__resume {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f8f9fa;
+     
     }
   }
 

@@ -9,12 +9,6 @@ export const bookingRoutes: Routes= [
     {
         path: '',
         component:BookingResumeLayoutComponent,
-        children: [
-            {
-                path: '',
-                component: ResumeCardContainerComponent
-            }
-        ]
 
     }
 ];
