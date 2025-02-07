@@ -107,6 +107,7 @@ export class CreateFlightComponent {
   };
 
   validateForm() {
+    console.log("entro aca")
     this.submitButtonData.disabled = this.form.invalid;
   }
 
