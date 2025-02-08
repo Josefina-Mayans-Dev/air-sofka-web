@@ -6,11 +6,13 @@ import { FlightsContainerComponent } from '../containers/flights-container/fligh
 import { PlanesContainerComponent } from '../containers/planes-container/planes-container.component';
 import { CreatePlaneContainerComponent } from '../containers/create-plane-container/create-plane-container.component';
 import { CreateMaintenanceContainerComponent } from '../containers/create-maintenance-container/create-maintenance-container.component';
+import { authGuard } from 'shared';
 
 export const adminRoutes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: '',
@@ -25,6 +27,7 @@ export const adminRoutes: Routes = [
   {
     path: 'create',
     component: FormLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: '',
