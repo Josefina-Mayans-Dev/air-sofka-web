@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
 import { IFlight } from '../../../../domain/model/flight';
-import { DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'lib-flight-card',
-  imports: [DatePipe],
+  imports: [DatePipe, CurrencyPipe],
   templateUrl: './flight-card.component.html',
   styleUrl: './flight-card.component.scss',
 })
