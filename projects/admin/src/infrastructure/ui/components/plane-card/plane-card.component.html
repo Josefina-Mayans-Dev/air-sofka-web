@@ -1,0 +1,20 @@
+<div class="card">
+  <img src="assets/svgs/airplane.svg" alt="Airplane">
+  <div class="card__details">
+    <div class="card__details__item">
+      <span class="card__details__item--label">Model:</span>
+      <span>{{ plane().model }}</span>
+    </div>
+    <div class="card__details__item">
+      <span class="card__details__item--label">State:</span>
+      <span
+        [ngClass]="
+          plane().state === 'DISABLED'
+            ? 'card__details__item--disabled'
+            : 'card__details__item--enabled'
+        "
+        >{{ plane().state }}</span
+      >
+    </div>
+  </div>
+</div>
