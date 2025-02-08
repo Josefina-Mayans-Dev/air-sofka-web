@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="form">
+  <div>
+    <app-input
+      [inputData]="modelInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
+  </div>
+  <app-button
+    [buttonData]="submitButtonData"
+    (clickEvent)="submit()"
+  ></app-button>
+</form>

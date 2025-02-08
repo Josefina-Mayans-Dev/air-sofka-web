@@ -1,0 +1,39 @@
+<form [formGroup]="form" class="form">
+  <div class="form__group">
+    <label for="plane" class="form__label">Plane</label>
+    <select
+      name="plane"
+      id="plane"
+      required
+      (change)="validateForm()"
+      formControlName="plane"
+      class="form__select"
+    >
+      <option value="" disabled selected>Select a plane</option>
+      @for (plane of planes(); track $index) {
+      <option [value]="plane.id">{{ plane.model }}</option>
+      }
+    </select>
+  </div>
+
+  <div>
+    <app-input
+      [inputData]="startInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
+  </div>
+
+  <div>
+    <app-input
+      [inputData]="endInput"
+      [formGroup]="form"
+      (outputData)="validateForm()"
+    ></app-input>
+  </div>
+
+  <app-button
+    [buttonData]="submitButtonData"
+    (clickEvent)="submit()"
+  ></app-button>
+</form>

@@ -1,23 +1,29 @@
 <div class="card">
+  <img src="assets/svgs/flight.svg" alt="Flight">
   <div class="card__details">
     <div class="card__details__item">
-      <span class="card__details__item--label">Origen:</span>
+      <span class="card__details__item--label">Origin:</span>
       <span>{{ flight().origin }}</span>
     </div>
 
     <div class="card__details__item">
-      <span class="card__details__item--label">Destino:</span>
+      <span class="card__details__item--label">Destination:</span>
       <span>{{ flight().destination }}</span>
     </div>
 
     <div class="card__details__item">
-      <span class="card__details__item--label">Salida:</span>
+      <span class="card__details__item--label">Departure:</span>
       <span>{{ flight().departure | date : "short" }}</span>
     </div>
 
     <div class="card__details__item">
-      <span class="card__details__item--label">Llegada:</span>
+      <span class="card__details__item--label">Arrival:</span>
       <span>{{ flight().arrival | date : "short" }}</span>
+    </div>
+
+    <div class="card__details__item">
+      <span class="card__details__item--label">Price:</span>
+      <span>{{ flight().price | currency : "USD" : "symbol" : "1.0-2"}}</span>
     </div>
   </div>
 </div>

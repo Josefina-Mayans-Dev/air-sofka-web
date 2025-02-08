@@ -3,7 +3,6 @@ import {
   computed,
   inject,
   input,
-  OnInit,
   output,
 } from '@angular/core';
 import {
@@ -27,13 +26,6 @@ export class CreateFlightComponent {
 
   planes = input<IPlane[]>([]);
   onSubmit = output<FlightRequest>();
-
-  options = computed(() => {
-    return this.planes().map((plane) => ({
-      value: plane.id,
-      option: plane.model,
-    }));
-  });
 
   originInput: IInput = {
     id: 'origin',
@@ -107,7 +99,6 @@ export class CreateFlightComponent {
   };
 
   validateForm() {
-    console.log("entro aca")
     this.submitButtonData.disabled = this.form.invalid;
   }
 
