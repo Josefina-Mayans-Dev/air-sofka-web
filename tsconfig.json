@@ -27,6 +27,9 @@
       "passenger": [
         "./dist/passenger"
       ],
+      "pay": [
+        "./dist/pay"
+      ],
       "booking": [
         "./dist/booking"
       ],
