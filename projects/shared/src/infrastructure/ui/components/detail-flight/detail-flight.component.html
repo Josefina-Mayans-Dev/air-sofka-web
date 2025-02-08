@@ -1,0 +1,9 @@
+<div class="flight-detail">
+    @for (item of detailsData().detail; track $index) {
+        <span class="flight-detail__label">{{ item }}</span>
+    }
+   
+    <a href="">
+        <span class="flight-detail__ref">{{ detailsData().ref }}</span>
+    </a>
+</div>
