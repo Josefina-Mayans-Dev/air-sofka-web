@@ -6,6 +6,11 @@
   padding: 16px;
   margin-bottom: 20px;
 
+  &__links {
+    display: flex;
+    gap: 8px;
+  }
+
   &__button {
     text-decoration: none;
     align-content: center;
