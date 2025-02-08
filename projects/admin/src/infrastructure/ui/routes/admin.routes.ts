@@ -5,6 +5,7 @@ import { AdminLayoutComponent } from '../layouts/admin-layout/admin-layout.compo
 import { FlightsContainerComponent } from '../containers/flights-container/flights-container.component';
 import { PlanesContainerComponent } from '../containers/planes-container/planes-container.component';
 import { CreatePlaneContainerComponent } from '../containers/create-plane-container/create-plane-container.component';
+import { CreateMaintenanceContainerComponent } from '../containers/create-maintenance-container/create-maintenance-container.component';
 
 export const adminRoutes: Routes = [
   {
@@ -32,6 +33,10 @@ export const adminRoutes: Routes = [
       {
         path: 'planes',
         component: CreatePlaneContainerComponent,
+      },
+      {
+        path: 'maintenances',
+        component: CreateMaintenanceContainerComponent,
       },
     ],
   },
