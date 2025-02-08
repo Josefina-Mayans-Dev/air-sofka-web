@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+        path:'seats',
+        loadChildren:() => import('seat-availability').then(m => m.seatRoutes)
+    },
+    {
         path: '',
         loadChildren: () => import('auth').then(m => m.authRoutes)
     },

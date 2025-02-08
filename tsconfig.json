@@ -30,6 +30,9 @@
       "booking": [
         "./dist/booking"
       ],
+      "seat-availability": [
+        "./dist/seat-availability"
+      ],
       "shared": [
         "./dist/shared"
       ]
