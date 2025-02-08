@@ -1,0 +1,109 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.badge {
+  text-align: end;
+
+  span {
+    font-size: 12px;
+    background: variables.$error-color;
+    padding: 0 2px;
+    color: variables.$white-color;
+  }
+}
+
+.flight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__from, &__to {
+    text-align: start;
+
+    &__time {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: variables.$text-color-secondary;
+      display: block;
+      line-height: 1.14;
+    }
+  
+    &__airport {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: variables.$text-color;
+    }
+
+  }
+
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+
+    &__stop {
+      gap: 15px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    &__stop-airport {
+      font-size: 0.75rem;
+      color: variables.$text-color;
+      margin-bottom: 15px;
+    }
+  
+    &__stop-duration {
+      font-size: 0.75rem;
+      color: variables.$text-color;
+    }
+  
+    &__stop-dot {
+      position: absolute;
+      top: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: variables.$secondary-color;
+      transform: translateY(-50%);
+    }
+  
+    &__arrow {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+  
+      hr {
+        border: none;
+        border-top: 1px solid variables.$text-color;
+        width: 100%;
+      }
+  
+      &--start,
+      &--end {
+        position: absolute;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: variables.$secondary-color;
+        transform: translateY(-50%);
+      }
+  
+  
+      &--end {
+        right: 0;
+      }
+    }
+  }
+}

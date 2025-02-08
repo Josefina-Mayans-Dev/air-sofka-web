@@ -1,0 +1,26 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.flight-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &__label, &__ref {
+        font-size: 12px;
+        letter-spacing: normal;
+    }
+
+    &__label {
+        color: variables.$text-color;
+        font-weight: 400;
+    }
+
+    a {
+        text-decoration-color: variables.$primary-color ;
+    }
+
+    &__ref {
+        color: variables.$primary-color;
+        font-weight: 700;
+    }
+}
