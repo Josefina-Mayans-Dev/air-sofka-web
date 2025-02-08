@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadChildren: () => import('passenger').then(m => m.passengerRoutes)
     },
     {
+        path: 'pay',
+        loadChildren: () => import('pay').then(m => m.payRoutes)
+    },
+    {
         path: 'flight',
         loadChildren: () => import('flight').then(m => m.flightRoutes)
     },
