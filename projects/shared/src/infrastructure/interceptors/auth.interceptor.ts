@@ -9,7 +9,13 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   let authReq = undefined;
 
-  if (tokenService.isAuthenticated()) {
+  const excludedRoutes = ['/flights', '/seats'];
+
+  const shouldIntercept = !excludedRoutes.some(
+    (route) => req.url.includes(route) && req.method === 'GET'
+  );
+
+  if (tokenService.isAuthenticated() && shouldIntercept) {
     authReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${tokenService.getToken()}`,
@@ -19,7 +25,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authReq ?? req).pipe(
     catchError((error: HttpErrorResponse) => {
-      switch (error.status ) {
+      switch (error.status) {
         case 400:
           break;
 
@@ -35,10 +41,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         case 500:
           // toastService.emitToast("Error", "Please contact support.", "error", true);
           break;
-
-      } 
+      }
       return throwError(() => error);
     })
   );
-
 };

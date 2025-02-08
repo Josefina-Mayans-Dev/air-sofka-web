@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { CreateFlightService } from '../infrastructure/services/create-flight.service';
 import { State } from '../domain/state';
-import { finalize, Observable, Subscription, tap } from 'rxjs';
+import { delay, finalize, Observable, Subscription, tap } from 'rxjs';
 import { FlightRequest } from '../domain/model/flight.request';
 import { Router } from '@angular/router';
 import { IFlight } from '../domain/model/flight';
@@ -34,10 +34,14 @@ export class CreateFlightUseCase {
     this.subscriptions.add(
       this._service
         .create(request)
-        .pipe(finalize(() => this._loading.setLoading(false)))
         .pipe(
-          tap((flight) => {
-            this._state.flights.set([...this._state.flights.snapshot(), flight]);
+          delay(2000),
+          finalize(() => this._loading.setLoading(false)),
+          tap((flight: any) => {
+            this._state.flights.set([
+              ...this._state.flights.snapshot(),
+              flight,
+            ]);
           })
         )
         .subscribe({
