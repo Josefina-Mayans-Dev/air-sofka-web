@@ -1,0 +1,108 @@
+.flight-search-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-bottom: 1px solid #dee2e6;
+
+    &__header {
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    &__tab {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__title {
+        font-size: 1.70rem;
+        margin-left: 20px;
+        margin-bottom: 0;
+        color: #007bff;
+    }
+
+    &__underline {
+        height: 4px;
+        background-color: #007bff;
+        width: 9rem;
+    }
+
+    &__body {
+        padding: 25px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+    &__row {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        gap: 10px;
+        width: 100%;
+    }
+
+    &__first-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__trip-type-selector {
+        width: auto;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    &__miles {
+        margin-right: 25px;
+    }
+
+    &__promo-code {
+        width: auto;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .promo-code__input {
+        margin-right: 100px;
+        height: 20px;
+        padding: 5px 10px;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 2px;
+    }
+
+
+    &__second-row {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    &__date-range {
+        width: 600px;
+    }
+
+    &__origin {
+        width: 150px;
+        margin-right: 20px;
+    }
+
+    &__destination {
+        width: 150px;
+        margin-right: 20px;
+    }
+
+}

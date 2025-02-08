@@ -1,0 +1,131 @@
+.date-range-picker {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.date-range-picker__date-fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-range-picker__date-field {
+    text-align: center;
+    width: 50%;
+    position: relative;
+}
+
+.date-range-picker__date-field:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 50%;
+    background-color: #ccc;
+}
+
+.date-range-picker__date-field label {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.date-range-picker__date-value {
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: #007bff;
+
+    &::placeholder {
+        color: #aaa;
+    }
+}
+
+.date-range-picker__calendars {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+    flex-wrap: wrap;
+
+    &.show {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+    }
+}
+
+.date-range-picker__calendar {
+    width: auto;
+    flex-grow: 1;
+}
+
+.date-range-picker__calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding: 0.5em 0;
+}
+
+.date-range-picker__calendar-button {
+    background-color: transparent;
+    border: none;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.date-range-picker__calendar-month-year {
+    text-align: center;
+}
+
+.date-range-picker__calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    color: #555;
+    font-size: 0.8em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #eee;
+}
+
+.date-range-picker__calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25em;
+}
+
+.date-range-picker__calendar-date {
+    text-align: center;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: #777;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+
+    &.selected {
+        background-color: #a36cda;
+        color: #fff;
+        border: 1px solid #663399;
+    }
+
+    &.in-range {
+        background-color: #e9e2ef;
+    }
+}

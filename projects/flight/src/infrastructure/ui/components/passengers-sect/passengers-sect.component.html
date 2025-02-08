@@ -1,0 +1,39 @@
+<div class="passengers-sect">
+    <label class="passengers-sect__label">Pasajeros</label>
+    <span class="passengers-sect__value-container" (click)="toggleDropdown()">
+        {{ totalPassengers }}
+    </span>
+
+    <div class="passengers-sect__dropdown" [class.show]="showDropdown">
+        <div class="passengers-sect__group">
+            <div class="passengers-sect__group-label">Adultos <p>12 o más años</p>
+            </div>
+            <div class="passengers-sect__group-controls">
+                <button class="passengers-sect__group-button" (click)="decreaseAdults()"
+                    [disabled]="adultCount <= 1">-</button>
+                <span>{{ adultCount }}</span>
+                <button class="passengers-sect__group-button" (click)="increaseAdults()">+</button>
+            </div>
+        </div>
+
+        <div class="passengers-sect__group">
+            <div class="passengers-sect__group-label">Niños<p>2 a 11 años</p>
+            </div>
+            <div class="passengers-sect__group-controls">
+                <button class="passengers-sect__group-button" (click)="decreaseChildren()">-</button>
+                <span>{{ childrenCount }}</span>
+                <button class="passengers-sect__group-button" (click)="increaseChildren()">+</button>
+            </div>
+        </div>
+
+        <div class="passengers-sect__group">
+            <div class="passengers-sect__group-label">Bebés<p>0 a 2 años</p>
+            </div>
+            <div class="passengers-sect__group-controls">
+                <button class="passengers-sect__group-button" (click)="decreaseBabies()">-</button>
+                <span>{{ babiesCount }}</span>
+                <button class="passengers-sect__group-button" (click)="increaseBabies()">+</button>
+            </div>
+        </div>
+    </div>
+</div>
