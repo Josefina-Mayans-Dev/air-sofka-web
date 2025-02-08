@@ -1,12 +1,88 @@
 <div class="seat-map-container">
-    <div class="seat-grid">
-        @for (seat of seats; track seat.id) {
-      <lib-seat
-                [seat]="seat"
-                [isSelected]="selectedSeats.has(seat.id)"
-                (seatClick)="seatSelected.emit(seat)">
-      </lib-seat>
-    }
+    <div class="seat-map-header">
+      <h2>Select Seats</h2>
+      <div class="aircraft-info">
+        <i class="fas fa-plane"></i>
+        <span>Boeing 737/3</span>
+      </div>
+    </div>
+  
+    <div class="seat-map-scroll">
+      <div class="seat-map-grid">
+        @for (row of seatMap; track row.row) {
+        <div class="seat-row" >
+          <!-- Left side seats -->
+          <div class="seat-group">
+            @for (seat of row.seats.slice(0, 3); track seat.id) {
+            <button
+              [class]="getSeatClasses(seat)"
+              [disabled]="seat.status === SeatStatus.OCCUPIED"
+              (click)="toggleSeatSelection(seat)"
+            >
+              {{ seat.number }}
+            </button>
+          }
+          </div>
+          
+          <!-- Aisle -->
+          <div class="aisle"></div>
+          
+          <!-- Right side seats -->
+          <div class="seat-group">
+            @for (seat of row.seats.slice(3); track seat.id) {
+            <button
+              [class]="getSeatClasses(seat)"
+              [disabled]="seat.status === SeatStatus.OCCUPIED"
+              (click)="toggleSeatSelection(seat)"
+            >
+              {{ seat.number }}
+            </button>
+          }
+          </div>
+        </div>
+      }
+      </div>
+    </div>
+  
+    <div class="booking-info">
+      <div class="selection-info">
+        <p>Selected: {{ selectedSeats.length ? selectedSeats.join(', ') : 'None' }}</p>
+        <p>Total: ${{ getTotalPrice().toFixed(2) }} USD</p>
+      </div>
+      <button
+        class="book-button"
+        [disabled]="selectedSeats.length === 0"
+        (click)="bookSeats()"
+      >
+        Book Selected Seats
+      </button>
+    </div>
+  
+    <div class="seat-legend">
+      <div class="legend-item">
+        <div class="legend-box"></div>
+        <span>Available</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box legend-box--occupied"></div>
+        <span>Occupied</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box legend-box--first"></div>
+        <span>First Class Seat</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box legend-box--business"></div>
+        <span>Business Class Seat</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box legend-box--economy"></div>
+        <span>Economy Class Seat</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-box legend-box--selected"></div>
+        <span>Selected</span>
+      </div>
     </div>
   </div>
   

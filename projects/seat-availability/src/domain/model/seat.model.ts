@@ -1,21 +1,39 @@
-export interface ISeat {
-  id: string;
-// number: row+column
-  row: number;
-  column: string;
-  status: SeatStatus;
-  price: number;
-  type: SeatClass;
+export enum SeatClass {
+  FIRST = 'first',
+  BUSINESS = 'business',
+  ECONOMY = 'economy'
 }
 
 export enum SeatStatus {
-  AVAILABLE = 'AVAILABLE',
-  OCCUPIED = 'OCCUPIED',
-  SELECTED = 'SELECTED'
+  OCCUPIED = 'occupied',
+  AVAILABLE = 'available',
+  SELECTED = 'selected'
 }
 
-export enum SeatClass{
-  ECONOMY = "ECONOMY",
-  BUSINESS = "BUSINESS",
-  FIRST = "FIRST"
+
+export interface ISeat {
+  id: string;
+  number: string;
+  row: number;
+  column: string;
+  type: SeatClass;
+  status: SeatStatus;
+  price: number;
+  idFlight: string;
+}
+
+export interface SeatRow {
+  row: number;
+  seats: ISeat[];
+}
+
+export interface SeatUpdateRequest {
+  flightId: string;
+  seatIds: string[];
+}
+
+export interface SeatUpdateResponse {
+  success: boolean;
+  updatedSeats: ISeat[];
+  message?: string;
 }

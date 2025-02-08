@@ -4,21 +4,19 @@ import { ISeat } from '../../../../domain/model/seat.model';
 import { GetSeatsUsecase } from '../../../../application/get-seat-map.usecase';
 /* import { SelectSeatUseCase } from '../../../../application/seat-map/select-seat.usecase';
 import { UnselectSeatUseCase } from '../../../../application/seat-map/unselect-seat.usecase'; */
-import { SeatMapComponent } from '../../components/seat-map/seat-map.component';
+
 import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
 import { AsyncPipe } from '@angular/common';
+import { SeatMapComponent} from '../../components/seat-map/seat-map.component';
 
 @Component({
   selector: 'app-seat-map-container',
-  imports: [SeatMapComponent, AsyncPipe],
+  imports: [SeatMapComponent],
   template: `
-    <lib-seat-map
-      [seats]="seats$ | async"
-      (seatSelected)="handleSeatSelection($event)">
-    </lib-seat-map> 
+  <lib-seat-map [flightId]="'66bf2b9b-cb42-400e-bbfe-b39c03549ced'"/>
   `
 })
-//   [selectedSeats]="selectedSeats"
+
 export class SeatMapContainer implements OnInit, OnDestroy {
     private readonly _getSeatsUsecase = inject(GetSeatsUsecase);
     public seat$: Observable<ISeat>;
