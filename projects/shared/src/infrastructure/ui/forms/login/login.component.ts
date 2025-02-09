@@ -1,19 +1,28 @@
 import { Component, inject, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from '../../../services';
-import { ButtonComponent } from "../../components/button/button.component";
+import { ButtonComponent } from '../../components/button/button.component';
+import { InputComponent } from '../../components/input/input.component';
 import { IButton, IInput } from '../../interfaces';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputComponent } from "../../components/input/input.component";
 
 @Component({
   selector: 'app-login',
   imports: [ButtonComponent, FormsModule, ReactiveFormsModule, InputComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
   private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
+  private router = inject(Router);
+
   showComponent = false;
 
   emailInput: IInput = {
@@ -40,21 +49,21 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   submitButtonData: IButton = {
     class: 'dark',
     size: 'large',
     label: 'Log in',
-    disabled: true
+    disabled: true,
   };
 
   buttonData: IButton = {
     class: 'light',
     size: 'large',
     label: 'Sign up',
-    disabled: false
+    disabled: false,
   };
 
   ngOnInit(): void {
@@ -72,8 +81,11 @@ export class LoginComponent implements OnInit {
     this.form.reset();
   }
 
-  auth(){
+  auth() {
     console.log(this.form.value);
   }
 
+  redirectToRegister() {
+    this.router.navigate(['users']);
+  }
 }

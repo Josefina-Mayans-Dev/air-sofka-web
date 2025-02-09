@@ -1,0 +1,226 @@
+<div class="register">
+  <div class="register__image-side">
+    <img src="../../assets/images/register.png" alt="Register background">
+  </div>
+
+  <div class="register__content" *ngIf="isRegistrationSuccess">
+    <div class="register__success">
+      <img src="../../assets/images/login.svg" alt="Success icon" class="register__success-icon">
+      <h1 class="register__success-title">¡Muy bien!</h1>
+      <h2 class="register__success-subtitle">Tu cuenta ha sido creada exitosamente</h2>
+      <p class="register__success-message">
+        Ya puedes acceder a todos los beneficios de Air Europa SUMA
+      </p>
+      
+    </div>
+  </div>
+
+  <div class="error-modal" *ngIf="showErrorModal">
+    <div class="error-modal__content">
+      <button class="error-modal__close" (click)="closeErrorModalWithOutEvent()">×</button>
+      <img src="../../assets/images/error.svg" alt="Error" class="error-modal__icon">
+      <h2 class="error-modal__title">Perdona, hubo un error</h2>
+      <p class="error-modal__message">{{ errorMessage }}</p>
+      <button class="error-modal__button" (click)="closeErrorModal()">
+        Volver a intentar
+      </button>
+    </div>
+  </div>
+  
+  <div class="register__content"  *ngIf="!isRegistrationSuccess">
+    <h1 class="register__title">
+      Regístrate
+      <span>en Air Europa SUMA</span>
+    </h1>
+
+    <p class="register__description">
+      SUMA es la forma de agradecer tu confianza en nosotros...
+    </p>
+
+    <p class="register__note">Los campos marcados con (*) son obligatorios.</p>
+
+    <form [formGroup]="form" class="register__form" (ngSubmit)="register()" action="" *ngIf="!isRegistrationSuccess">
+      <fieldset class="register__fieldset">
+
+        <legend>Tus datos personales</legend>
+        <p class="register__fieldset-note">
+          Los datos introducidos deben coincidir exactamente con los datos de su documento de identificación
+        </p>
+
+        <div class="register__form-row">
+
+          <div class="register__input-group">
+            <label>Tratamiento <span class="register__required">*</span></label>
+            <select formControlName="treatment" required>
+              <option value="">Seleccionar</option>
+              <option value="sr">Sr.</option>
+              <option value="sra">Sra.</option>
+            </select>
+            <span class="error-message" *ngIf="form.get('treatment')?.errors?.['required']">
+              El tratamiento es obligatorio
+            </span>
+          </div>
+
+          <div class="register__input-group">
+            <label>Nombre <span class="register__required">*</span></label>
+            <input type="text" formControlName="name" required>
+            <span class="error-message" *ngIf="form.get('name')?.errors?.['required']">
+              <span *ngIf="form.get('name')?.errors?.['required']">El nombre es obligatorio</span>
+              <span *ngIf="form.get('name')?.errors?.['minlength']">El nombre debe tener al menos 2 caracteres</span>
+              <span *ngIf="form.get('name')?.errors?.['pattern']">El nombre solo puede contener letras</span>
+            </span>
+          </div>
+
+        </div>
+
+        <div class="register__form-row">
+          <div class="register__input-group">
+            <label>Primer apellido <span class="register__required">*</span></label>
+            <input type="text" formControlName="firstSurname" required>
+            <span class="error-message" *ngIf="form.get('firstSurname')?.errors">
+              <span *ngIf="form.get('firstSurname')?.errors?.['required']">El primer apellido es obligatorio</span>
+              <span *ngIf="form.get('firstSurname')?.errors?.['minlength']">El primer apellido es debe tener al menos 2
+                caracteres</span>
+              <span *ngIf="form.get('firstSurname')?.errors?.['pattern']">El primer apellido solo puede contener
+                letras</span>
+            </span>
+          </div>
+
+          <div class="register__input-group">
+            <label>Segundo apellido</label>
+            <input type="text" formControlName="secondSurname">
+            <span class="error-message" *ngIf="form.get('secondSurname')?.errors">
+              <span *ngIf="form.get('secondSurname')?.errors?.['required']">El segundo apellido es obligatorio</span>
+              <span *ngIf="form.get('secondSurname')?.errors?.['minlength']">El segundo apellido es debe tener al menos
+                2 caracteres</span>
+              <span *ngIf="form.get('secondSurname')?.errors?.['pattern']">El segundo apellido solo puede contener
+                letras</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="register__input-group">
+          <label>Fecha de nacimiento <span class="register__required">*</span></label>
+          <input type="date" formControlName="birthDate" required>
+        </div>
+
+        <div class="register__form-row">
+          <div class="register__input-group">
+            <label>Tipo de documento <span class="register__required">*</span></label>
+            <select formControlName="documentType" required>
+              <option value="">Seleccionar</option>
+              <option value="SPANISH_ID_CARD">DNI Español</option>
+              <option value="PASSPORT">Pasaporte</option>
+              <option value="OTHER">Otros</option>
+              <option value="ID_CARD">Documento de identidad</option>
+              <option value="FOREIGNER_ID_CARD">NIE/Cert. Registro Central de Extranje...</option>
+            </select>
+            <span class="error-message" 
+                  *ngIf="form.get('documentType')?.errors?.['required']">
+              Por favor, seleccione un tipo de documento
+            </span>
+           </div>
+
+          <div class="register__input-group">
+            <label>Número de documento <span class="register__required">*</span></label>
+            <input type="text" formControlName="documentNumber" required>
+            <span class="error-message" *ngIf="form.get('documentNumber')?.errors">
+              <span *ngIf="form.get('documentNumber')?.errors?.['required']">El número de documento es
+                obligatorio</span>
+              <span *ngIf="form.get('documentNumber')?.errors?.['invalidDNI']">DNI inválido</span>
+              <span *ngIf="form.get('documentNumber')?.errors?.['invalidPassport']">Pasaporte inválido</span>
+              <span *ngIf="form.get('documentNumber')?.errors?.['invalidNIE']">NIE inválido</span>
+            </span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="register__fieldset">
+        <legend>Tus datos de contacto</legend>
+
+        <div class="register__input-group">
+          <label>E-mail <span class="register__required">*</span></label>
+          <input type="email" formControlName="email" required>
+          <span class="error-message" *ngIf="form.get('email')?.errors && form.get('email')?.touched">
+            <span *ngIf="form.get('email')?.errors?.['required']">El email es obligatorio</span>
+            <span *ngIf="form.get('email')?.errors?.['email']">Ingrese un email válido</span>
+          </span>
+        </div>
+
+        <div class="register__form-row">
+          <div class="register__input-group">
+            <label>Prefijo <span class="register__required">*</span></label>
+            <select formControlName="prefix" required>
+              <option value="">Seleccionar</option>
+              <option value="593">+593 (Ecuador)</option>
+              <option value="57">+57 (Colombia)</option>
+              <option value="598">+598 (Uruguay)</option>
+            </select>
+            <span class="error-message" *ngIf="form.get('prefix')?.errors?.['required']">
+              Por favor, seleccione un prefijo
+            </span>
+          </div>
+
+          <div class="register__input-group">
+            <label>Teléfono <span class="register__required">*</span></label>
+            <input type="number" formControlName="phone" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="register__fieldset">
+        <legend>Selecciona tu contraseña</legend>
+
+        <div class="register__input-group">
+          <label>Contraseña <span class="register__required">*</span></label>
+          <div class="password-field">
+            <input type="password" formControlName="password" required>
+            <button type="button" class="show-password">
+              <img src="assets/svgs/eye.svg" alt="Mostrar contraseña">
+            </button>
+          </div>
+          <span class="error-message" *ngIf="form.get('password')?.errors">
+            <span *ngIf="form.get('password')?.errors?.['required']">La contraseña es obligatoria</span>
+            <span *ngIf="form.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 8
+              caracteres</span>
+            <span *ngIf="form.get('password')?.errors?.['weakPassword']">
+              La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial
+            </span>
+          </span>
+        </div>
+
+        <div class="register__input-group">
+          <label>Repite tu contraseña <span class="register__required">*</span></label>
+          <div class="password-field">
+            <input type="password" formControlName="repeatPassword" required>
+            <button type="button" class="show-password">
+              <img src="assets/svgs/eye.svg" alt="Mostrar contraseña">
+            </button>
+          </div>
+          <span class="error-message" *ngIf="form.errors?.['passwordMismatch']">
+            Las contraseñas no coinciden
+          </span>
+        </div>
+      </fieldset>
+
+      <div class="register__terms">
+        <input type="checkbox" id="terms" formControlName="terms" required>
+        <label for="terms">
+          Acepto las condiciones generales del
+          <a href="#">Programa Air Europa SUMA</a> y la
+          <a href="#">política de privacidad</a>
+        </label>
+        <span class="error-message" *ngIf="form.get('terms')?.errors?.['required']">
+          Debe aceptar los términos y condiciones para continuar
+        </span>
+      </div>
+
+      <button type="submit" class="register__submit">Regístrate</button>
+
+      <div class="register__login">
+        <span>¿Ya eres parte de Air Europa SUMA?</span>
+        <a href="/login">Inicia sesión</a>
+      </div>
+    </form>
+  </div>
+</div>
