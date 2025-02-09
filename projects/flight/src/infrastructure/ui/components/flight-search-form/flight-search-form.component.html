@@ -13,7 +13,7 @@
                 [selectedOption]="opcionSeleccionada" (selectionChange)="onSelectionChange($event)" />
 
             <label class="flight-search-container__miles">
-                <input type="checkbox" /> Pagar Con Millas
+                <input type="checkbox" (change)="onPagarConMillasChange($event)" /> Pagar Con Millas
             </label>
 
             <div class="flight-search-container__promo-code promo-code">
@@ -23,11 +23,18 @@
         </div>
 
         <div class="flight-search-container__row flight-search-container__second-row">
-            <lib-origin class="flight-search-container__origin" />
-            <lib-destination class="flight-search-container__destination" />
-            <lib-date-range-picker class="flight-search-container__date-range" />
-            <lib-passengers-sect class="flight-search-container__passengers" />
-            <lib-search-btn class="flight-search-container__button" />
+            <lib-origin class="flight-search-container__origin" (locationSelected)="onSelectionOrigin($event)" />
+
+            <lib-destination class="flight-search-container__destination"
+                (locationSelected)="onSelectionDestination($event)" />
+
+            <lib-date-range-picker class="flight-search-container__date-range"
+                (dateRangeSelected)="onSelectedRange($event)" />
+
+            <lib-passengers-sect class="flight-search-container__passengers"
+                (passengersChanged)="onSelectedPassenger($event)" />
+
+            <lib-search-btn class="flight-search-container__button" (click)="onSearchFlight()" />
         </div>
     </div>
 </div>

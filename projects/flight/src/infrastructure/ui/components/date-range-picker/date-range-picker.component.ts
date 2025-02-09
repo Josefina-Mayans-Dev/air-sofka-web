@@ -10,6 +10,7 @@ import { CalendarType } from '../../interfaces/calendar';
   styleUrl: './date-range-picker.component.scss'
 })
 export class DateRangePickerComponent implements OnInit {
+
   @Output() dateRangeSelected = new EventEmitter<{ start: DateModel | null; end: DateModel | null }>();
 
   currentMonth1: number;
@@ -32,7 +33,7 @@ export class DateRangePickerComponent implements OnInit {
     this.currentYear2 = today.getFullYear();
 
     if (this.currentMonth2 > 11) {
-      this.currentMonth2 = 0; 
+      this.currentMonth2 = 0;
       this.currentYear2 = this.currentYear1 + 1;
     }
 
@@ -47,12 +48,12 @@ export class DateRangePickerComponent implements OnInit {
     let year = calendarNumber === 1 ? this.currentYear1 : this.currentYear2;
 
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const firstDayOfMonth = new Date(year, month, 1).getDay(); 
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
 
     let calendar: DateModel[] = [];
 
     for (let i = 0; i < firstDayOfMonth; i++) {
-      calendar.push({ day: 0, month: 0, year: 0 }); 
+      calendar.push({ day: 0, month: 0, year: 0 });
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
@@ -68,19 +69,19 @@ export class DateRangePickerComponent implements OnInit {
 
   selectDate(date: DateModel): void {
     if (date.day === 0) {
-      return; 
+      return;
     }
 
     if (!this.startDate) {
       this.startDate = date;
-      this.endDate = null; 
+      this.endDate = null;
     } else if (!this.endDate) {
       if (this.isDateBefore(date, this.startDate)) {
         this.startDate = date;
       } else {
         this.endDate = date;
       }
-      this.emitSelectedRange(); 
+      this.onSelectedRange();
     } else {
       this.startDate = date;
       this.endDate = null;
@@ -182,12 +183,11 @@ export class DateRangePickerComponent implements OnInit {
     return monthNames[month];
   }
 
-  emitSelectedRange(): void {
+  onSelectedRange(): void {
     this.dateRangeSelected.emit({ start: this.startDate, end: this.endDate });
   }
 
   toggleCalendar(calendarType: CalendarType): void {
-    console.log("Se ha clickeado! " + calendarType);
     this.showCalendar = !this.showCalendar;
   }
 

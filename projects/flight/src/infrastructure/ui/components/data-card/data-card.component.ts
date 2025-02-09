@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { IDataCard } from '../../interfaces/data-card.interface';
 import { RouteFlightComponent, DetailFlightComponent } from 'shared';
 
@@ -10,4 +10,9 @@ import { RouteFlightComponent, DetailFlightComponent } from 'shared';
 })
 export class DataCardComponent {
   data = input<IDataCard[]>();
+  cardClicked = output<IDataCard>();
+
+  onCardClick(item: any) {
+    this.cardClicked.emit(item);
+  }
 }
