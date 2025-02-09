@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { LoginFormComponent } from "../../forms/login-form/login-form.component";
 import { AuthUserUseCase } from '../../../../application/auth-user.usecase';
 import { Subject } from 'rxjs';
-import { TokenService } from '../../../services';
+import { LoadingService, TokenService } from '../../../services';
 import { IAuthRequest } from '../../../../domain/model/auth-request.model';
 
 @Component({
@@ -14,6 +14,8 @@ import { IAuthRequest } from '../../../../domain/model/auth-request.model';
 export class LoginComponent implements OnInit {
   private readonly _useCase = inject(AuthUserUseCase);
   private tokenService = inject(TokenService);
+  private loaderService = inject(LoadingService);
+
   renderLogin = false;
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   auth(authForm: any) {
+    this.loaderService.setLoading(true);
     this._useCase.execute(authForm as IAuthRequest);
   }
 

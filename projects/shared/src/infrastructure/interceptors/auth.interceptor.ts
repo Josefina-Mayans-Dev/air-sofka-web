@@ -3,10 +3,13 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { TokenService } from '../services/utils/token.service';
+import { LoadingService } from '../services';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const tokenService = inject(TokenService);
   const router = inject(Router);
+  const loaderService = inject(LoadingService);
+
   let authReq = undefined;
 
   const excludedRoutes = ['/flights', '/seats'];
@@ -25,6 +28,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authReq ?? req).pipe(
     catchError((error: HttpErrorResponse) => {
+      loaderService.setLoading(false);
       switch (error.status) {
         case 400:
           break;

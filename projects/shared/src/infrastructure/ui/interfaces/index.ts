@@ -6,3 +6,4 @@ export * from './modal.interface';
 export * from './navBar.interface';
 export * from './route-flight.interface';
 export * from './details-flight.interface';
+export * from './dropdown.interface';
