@@ -10,14 +10,14 @@
             </div>
         </div>
     </div>
-    <div class="card__right col-4">
-        <button class="card__right__button"> 
+    <div class="card__right col-4" (click)="onCardClick(item)">
+        <button class="card__right__button">
             <div class="card__right__button__content">
                 <span class="card__right__button__from">from</span>
                 <span class="card__right__button__price">{{item.price}}
                     <span class="card__right__button__currency">USD</span>
                 </span>
-            </div>            
+            </div>
 
             <svg width="22" height="22">
                 <use xlink:href="assets/svgs/down.svg#down"></use>

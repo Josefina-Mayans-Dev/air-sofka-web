@@ -54,7 +54,8 @@
                 align-items: start;
             }
 
-            &__from, &__price {
+            &__from,
+            &__price {
                 line-height: normal;
                 letter-spacing: normal;
             }
@@ -75,6 +76,14 @@
             &__currency {
                 font: 700 80% Lato;
             }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(0, 123, 255, 0.1);
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease-in-out;
         }
     }
 }
