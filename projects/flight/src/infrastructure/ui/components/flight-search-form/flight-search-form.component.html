@@ -23,10 +23,17 @@
         </div>
 
         <div class="flight-search-container__row flight-search-container__second-row">
-            <lib-origin class="flight-search-container__origin" />
-            <lib-destination class="flight-search-container__destination" />
-            <lib-date-range-picker class="flight-search-container__date-range" />
-            <lib-passengers-sect class="flight-search-container__passengers" />
+            <lib-origin class="flight-search-container__origin" (locationSelected)="onSelectionOrigin($event)" />
+
+            <lib-destination class="flight-search-container__destination"
+                (locationSelected)="onSelectionDestination($event)" />
+
+            <lib-date-range-picker class="flight-search-container__date-range"
+                (dateRangeSelected)="onSelectedRange($event)" />
+
+            <lib-passengers-sect class="flight-search-container__passengers"
+                (passengersChanged)="onSelectedPassenger($event)" />
+
             <lib-search-btn class="flight-search-container__button" (click)="onSearchFlight()" />
         </div>
     </div>

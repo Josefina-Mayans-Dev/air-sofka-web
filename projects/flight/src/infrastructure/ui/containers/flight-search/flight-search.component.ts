@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FlightSearchFormComponent } from '../../components/flight-search-form/flight-search-form.component';
+import { FlightSearchCriteria } from '../../interfaces/flight-search-criteria';
 
 @Component({
   selector: 'lib-flight-search',
@@ -8,7 +9,7 @@ import { FlightSearchFormComponent } from '../../components/flight-search-form/f
 })
 export class FlightSearchComponent {
 
-  searchFlight(filters: any) {
-    console.log("handler filtering");
+  searchFlight(filters: FlightSearchCriteria) {
+    console.log("llega: " + filters);
   }
 }

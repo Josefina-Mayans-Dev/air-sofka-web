@@ -1,5 +1,5 @@
-interface FlightSearchCriteria {
-    tripType: "Round Trip" | "One Way" | "Multi-City";
+export interface FlightSearchCriteria {
+    tripType: string;//"Round Trip" | "One Way" | "Multi-City";
     origin: string;
     destination: string;
     departureDate: string;
