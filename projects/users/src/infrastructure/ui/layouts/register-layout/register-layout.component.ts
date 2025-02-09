@@ -193,7 +193,6 @@ export class RegisterLayoutComponent {
         )
         .subscribe({
           error: (error) => {
-            debugger;
             this.showErrorModal = true;
             this.errorMessage =
               error.error.message;  

@@ -10,7 +10,6 @@ import { CreateUserResponse } from '../../domain/model/createUserResponse';
 export class UserService {
   private readonly http = inject(HttpClient);
   createUser(request: CreateUserRequest): Observable<CreateUserResponse> {
-    debugger;
     return this.http.post<CreateUserResponse>('http://localhost:8080/users', request);
   }
   
