@@ -24,23 +24,7 @@ export class FlightComponent {
   flights$: Observable<IFlight[]> | undefined;
   private subscription: Subscription | undefined;
 
-  list: IDataCard[] = [
-    {
-      route: {
-        departureTime: '06:10',
-        departureAirportCode: 'LPA',
-        arrivalTime: '00:34',
-        arrivalAirportCode: 'UIO',
-        stopAirportCode: '2stops',
-        days: '+1 day'
-      },
-      detail: {
-        detail: ['Duration 23h 24min', 'Operated by Air Europa Copa Airlines'],
-        ref: 'See itinerary details'
-      },
-      price: 650.85
-    }
-  ]
+  list: IDataCard[] = [];
   returnList: IDataCard[] = [];
 
   constructor() {
@@ -114,6 +98,8 @@ export class FlightComponent {
     console.table(data);
     this.selectIda = false;
     this._state.flightsSelected.$().pipe(take(1)).subscribe(currentState => {
+      currentState.filters.adults;
+      console.log(currentState.filters.adults);
       const updatedState: IFlightSelected = {
         ...currentState,
         origin: {
