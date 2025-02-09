@@ -277,7 +277,8 @@
           }
         }
       }
-    },"pay": {
+    },
+    "pay": {
       "projectType": "library",
       "root": "projects/pay",
       "sourceRoot": "projects/pay/src",

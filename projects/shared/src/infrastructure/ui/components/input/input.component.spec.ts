@@ -47,7 +47,7 @@ describe('InputComponent', () => {
       
     });
 
-    it('should be called onClick', () => {
+    it('should be called onKeyUp', () => {
         const fixture = TestBed.createComponent(InputComponent);
         const component = fixture.componentInstance;
 
@@ -68,21 +68,20 @@ describe('InputComponent', () => {
 
         const compiled = fixture.nativeElement as HTMLElement;
         const inputElement = compiled.querySelector('input');
+        
         fixture.componentRef.setInput('inputData', inputData);
         fixture.componentRef.setInput('formGroup', formGroup);
         fixture.detectChanges();
+
         spyOn(component.outputData, 'emit');
-    
-    
-        inputElement.dispatchEvent(new InputEvent('input', {
-            bubbles: true,
-            cancelable: true,
-            data: 'search',
-        }));
 
-        
+        inputElement.value = 'search';
+
+        inputElement.dispatchEvent(new KeyboardEvent('keyup', { key: 's' }));
+
+        fixture.detectChanges();
+
         expect(component.outputData.emit).toHaveBeenCalled();
-
     });
 
 });

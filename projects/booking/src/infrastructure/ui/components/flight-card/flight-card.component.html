@@ -1,0 +1,24 @@
+<div class="flight-card">
+  <div class="flight-card__header">
+    <h2 class="flight-card__title">{{ title() }}</h2>
+    <p class="flight-card__date">{{ date() }}</p>
+  </div>
+  <div class="flight-card__separator"></div>
+  <div class="flight-card__content">
+
+    <div class="flight-card__legs">
+      @for (leg of legs(); track $index) {
+      <lib-flight-leg [leg]="leg"></lib-flight-leg>
+      }
+    </div>
+
+    <div class="flight-card__footer">
+      <p class="flight-card__duration">Duration: {{ duration() }}</p>
+      <p class="flight-card__operator">Operated by: {{ operatedBy() }}</p>
+      <a href="#" class="flight-card__details-link">View itinerary details</a>
+    </div>
+
+  </div>
+
+
+</div>

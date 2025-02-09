@@ -1,0 +1,39 @@
+<header class="header">
+  <a [routerLink]="['/']" class="header__button--secondary header__button"
+    >Go home</a
+  >
+  @if (!isPlanes) {
+  <div class="header__links">
+    <a
+      [routerLink]="['/admin/planes']"
+      class="header__button--main header__button"
+      >View planes</a
+    >
+    <a
+      [routerLink]="['/admin/create']"
+      class="header__button--main header__button"
+      >Create flight</a
+    >
+  </div>
+  } @else {
+  <div class="header__links">
+    <a [routerLink]="['/admin']" class="header__button--main header__button"
+      >View flights</a
+    >
+    <a
+      [routerLink]="['/admin/create/planes']"
+      class="header__button--main header__button"
+      >Create plane</a
+    >
+    <a
+      [routerLink]="['/admin/create/maintenances']"
+      class="header__button--main header__button"
+      >Create maintenance</a
+    >
+  </div>
+  }
+</header>
+<main class="main">
+  <router-outlet></router-outlet>
+</main>
+<lib-loading></lib-loading>

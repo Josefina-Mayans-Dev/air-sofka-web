@@ -1,0 +1,78 @@
+<div class="date-range-picker">
+    <div class="date-range-picker__date-fields">
+        <div class="date-range-picker__date-field">
+            <label for="departureDate">Fecha de ida</label>
+            <button class="date-range-picker__date-value" id="departureDate" (click)="toggleCalendar('start')">
+                {{ startDate ? (startDate.day + '/' + startDate.month + '/' + startDate.year) : 'DD/MM/YYYY' }}
+            </button>
+        </div>
+
+        <div class="date-range-picker__date-field">
+            <label for="returnDate">Fecha de vuelta</label>
+            <button class="date-range-picker__date-value" id="returnDate" (click)="toggleCalendar('end')">
+                {{ endDate ? (endDate.day + '/' + endDate.month + '/' + endDate.year) : 'DD/MM/YYYY' }}
+            </button>
+        </div>
+    </div>
+
+    <div class="date-range-picker__calendars" [class.show]="showCalendar">
+
+        <div class="date-range-picker__calendar">
+            <div class="date-range-picker__calendar-header">
+                <button class="date-range-picker__calendar-button" (click)="goToPreviousMonth(1)">
+                    < </button>
+                        <div class="date-range-picker__calendar-month-year">
+                            {{ monthName(currentMonth1) }} {{ currentYear1 }}
+                        </div>
+                        <button class="date-range-picker__calendar-button" (click)="goToNextMonth(1)">
+                            >
+                        </button>
+            </div>
+            <div class="date-range-picker__calendar-weekdays">
+                <div>L</div>
+                <div>M</div>
+                <div>M</div>
+                <div>J</div>
+                <div>V</div>
+                <div>S</div>
+                <div>D</div>
+            </div>
+            <div class="date-range-picker__calendar-dates">
+                <div *ngFor="let date of calendar1" class="date-range-picker__calendar-date"
+                    [class.selected]="isDateSelected(date)" [class.in-range]="isDateInRange(date)"
+                    (click)="selectDate(date)">
+                    {{ date.day === 0 ? '' : date.day }}
+                </div>
+            </div>
+        </div>
+
+        <div class="date-range-picker__calendar">
+            <div class="date-range-picker__calendar-header">
+                <button class="date-range-picker__calendar-button" (click)="goToPreviousMonth(2)">
+                    < </button>
+                        <div class="date-range-picker__calendar-month-year">
+                            {{ monthName(currentMonth2) }} {{ currentYear2 }}
+                        </div>
+                        <button class="date-range-picker__calendar-button" (click)="goToNextMonth(2)">
+                            >
+                        </button>
+            </div>
+            <div class="date-range-picker__calendar-weekdays">
+                <div>L</div>
+                <div>M</div>
+                <div>M</div>
+                <div>J</div>
+                <div>V</div>
+                <div>S</div>
+                <div>D</div>
+            </div>
+            <div class="date-range-picker__calendar-dates">
+                <div *ngFor="let date of calendar2" class="date-range-picker__calendar-date"
+                    [class.selected]="isDateSelected(date)" [class.in-range]="isDateInRange(date)"
+                    (click)="selectDate(date)">
+                    {{ date.day === 0 ? '' : date.day }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

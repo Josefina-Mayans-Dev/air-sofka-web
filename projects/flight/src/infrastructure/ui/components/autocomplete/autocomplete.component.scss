@@ -1,0 +1,74 @@
+/* input-location.component.scss */
+
+.location-origin {
+    position: relative;
+    /* Para posicionar el dropdown */
+    width: 100%;
+    /* O un ancho específico si es necesario */
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    /* Coloca el dropdown justo debajo del input */
+    left: 0;
+    width: 100%;
+    /* O un ancho específico si es necesario */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Asegura que esté encima de otros elementos */
+}
+
+.dropdown-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-list li {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-list .section-header {
+    padding: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.dropdown-list .footer-link {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: blue;
+    text-decoration: none;
+    border-top: 1px solid #eee;
+}
+
+.dropdown-list .footer-link:hover {
+    background-color: #eee;
+}

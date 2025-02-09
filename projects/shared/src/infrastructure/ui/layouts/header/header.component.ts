@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../services';
-import { ButtonComponent } from "../../components/button/button.component";
-import { InputComponent } from "../../components/input/input.component";
+import { LoginService, TokenService } from '../../../services';
+import { ButtonComponent, InputComponent } from '../../components';
 import { Inav } from '../../interfaces';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -15,8 +14,9 @@ import { Inav } from '../../interfaces';
 })
 export class HeaderComponent implements OnInit {
   private loginService = inject(LoginService);
+  private tokenService = inject(TokenService);
   private router = inject(Router);
-
+  
   itemsNavBar: Inav[] = [
     {
       type: 'button',
@@ -97,7 +97,7 @@ export class HeaderComponent implements OnInit {
     debugger;
     switch (action) {
       case 'login':
-        this.loginService.loginVisible(true);
+        this.tokenService.isAuthenticated() ? this.router.navigate(['/admin']): this.loginService.loginVisible(true);
         break;
       case  'register':
         this.router.navigate(['users/']);

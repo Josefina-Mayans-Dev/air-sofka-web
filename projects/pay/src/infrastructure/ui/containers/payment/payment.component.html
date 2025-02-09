@@ -1,0 +1,11 @@
+<div class="payment-container">
+    <h2>Paga tu reserva de forma segura</h2>
+
+    <lib-payment-form (paymentSubmit)="onPaymentSubmit($event)"></lib-payment-form>
+
+    @if (processingPayment) {
+    <div class="payment-message" role="alert">
+        {{ paymentMessage }}
+    </div>
+    }
+</div>

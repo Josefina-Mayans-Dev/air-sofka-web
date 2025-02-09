@@ -1,0 +1,5 @@
+<div class="autocomplete__input-container">
+    <label for="origin" class="autocomplete__label">Origen</label>
+    <input type="text" id="origin" class="autocomplete__input" placeholder="Elige origen" [(ngModel)]="query"
+        (input)="filtrarPaises()" (focus)="showDropdown = true" (blur)="delayHideDropdown()">
+</div>

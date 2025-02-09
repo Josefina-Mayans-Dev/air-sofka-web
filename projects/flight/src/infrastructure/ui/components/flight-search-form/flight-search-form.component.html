@@ -1,0 +1,33 @@
+<div class="flight-search-container">
+    <div class="flight-search-container__header">
+        <div class="flight-search-container__tab">
+            <h2 class="flight-search-container__title" id="flightSearchHeading">Vuelos</h2>
+        </div>
+        <div class="flight-search-container__underline"></div>
+    </div>
+
+    <div class="flight-search-container__body">
+
+        <div class="flight-search-container__row flight-search-container__first-row">
+            <lib-trip-type-selector class="flight-search-container__trip-type-selector" [options]="opciones"
+                [selectedOption]="opcionSeleccionada" (selectionChange)="onSelectionChange($event)" />
+
+            <label class="flight-search-container__miles">
+                <input type="checkbox" /> Pagar Con Millas
+            </label>
+
+            <div class="flight-search-container__promo-code promo-code">
+                <input type="text" placeholder="Añadir código promoción" class="promo-code__input" />
+                <a href="#" class="promo-code__currency-link"> $ Moneda | USD </a>
+            </div>
+        </div>
+
+        <div class="flight-search-container__row flight-search-container__second-row">
+            <lib-origin class="flight-search-container__origin" />
+            <lib-destination class="flight-search-container__destination" />
+            <lib-date-range-picker class="flight-search-container__date-range" />
+            <lib-passengers-sect class="flight-search-container__passengers" />
+            <lib-search-btn class="flight-search-container__button" />
+        </div>
+    </div>
+</div>

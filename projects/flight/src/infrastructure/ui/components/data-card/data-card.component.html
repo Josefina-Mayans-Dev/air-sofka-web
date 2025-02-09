@@ -1,0 +1,28 @@
+@for (item of data(); track $index) {
+<div class="card grid">
+    <div class="card__left col-8">
+        <div class="card__left__content grid">
+            <div class="card__left__flight col-6">
+                <lib-route-flight [routeData]="item.route"></lib-route-flight>
+            </div>
+            <div class="card__left__detail col6">
+                <lib-detail-flight [detailsData]="item.detail"></lib-detail-flight>
+            </div>
+        </div>
+    </div>
+    <div class="card__right col-4">
+        <button class="card__right__button"> 
+            <div class="card__right__button__content">
+                <span class="card__right__button__from">from</span>
+                <span class="card__right__button__price">{{item.price}}
+                    <span class="card__right__button__currency">USD</span>
+                </span>
+            </div>            
+
+            <svg width="22" height="22">
+                <use xlink:href="assets/svgs/down.svg#down"></use>
+            </svg>
+        </button>
+    </div>
+</div>
+}

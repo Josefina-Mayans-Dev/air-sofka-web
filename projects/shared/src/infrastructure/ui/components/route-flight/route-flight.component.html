@@ -1,0 +1,34 @@
+@if (routeData().days) {
+  <div class="badge">
+    <span>{{ routeData().days }}</span>
+  </div>
+}
+<div class="flight">
+
+  <div class="flight__from">
+    <span class="flight__from__time">{{ routeData().departureTime }}</span>
+    <span class="flight__from__airport">{{ routeData().departureAirportCode }}</span>
+  </div>
+
+  <div class="flight__center">
+    <div class="flight__center__stop">
+      @if (routeData().stopAirportCode) {
+      <span class="flight__center__stop-airport">{{ routeData().stopAirportCode }}</span>
+      <span class="flight__center__stop-dot"></span>
+      <span class="flight__center__stop-duration">{{ routeData().stopDuration }}</span>
+      }
+    </div>
+    <div class="flight__center__arrow">
+      <span class="flight__center__arrow--start"></span>
+      <hr />
+      <span class="flight__center__arrow--end"></span>
+    </div> 
+  
+
+  </div>
+
+   <div class="flight__to">
+      <span class="flight__to__time">{{ routeData().arrivalTime }}</span>
+      <span class="flight__to__airport">{{ routeData().arrivalAirportCode }}</span>
+   </div>
+</div>

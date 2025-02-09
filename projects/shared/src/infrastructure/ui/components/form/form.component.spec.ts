@@ -1,11 +1,21 @@
 import { TestBed } from "@angular/core/testing";
 import { IField, IForm, IInput } from "../../interfaces";
 import { FormComponent } from "./form.component";
+import { ActivatedRoute } from "@angular/router";
+import { of } from "rxjs";
 
 describe('FormComponent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [FormComponent],
+        providers: [
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              params: of({})
+            }
+          }
+        ]
       }).compileComponents();
     });
   
@@ -36,8 +46,9 @@ describe('FormComponent', () => {
                     validators: [],
                 } as IField],
                 buttonForm: {
-                    type: 'submit',
-                    value: 'submit',
+                    class: 'submit',
+                    label: 'submit',
+                    routerLink: '',
                     disabled: false,
                 },
         };
