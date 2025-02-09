@@ -6,7 +6,8 @@
     "start": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:libs": "ng build shared && ng build admin && ng build auth && ng build users && ng build flight && ng build passenger && ng build pay && ng build seat-availability && ng build booking"
   },
   "private": true,
   "dependencies": {

@@ -94,7 +94,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   executeAction(action: string) {
-    debugger;
     switch (action) {
       case 'login':
         this.tokenService.isAuthenticated() ? this.router.navigate(['/admin']): this.loginService.loginVisible(true);
