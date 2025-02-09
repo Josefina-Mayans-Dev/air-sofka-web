@@ -1,9 +1,16 @@
-import { Component, inject, input, OnInit, output } from '@angular/core';
+import { Component, inject, OnInit, output } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from '../../../services';
-import { ButtonComponent } from "../../components/button/button.component";
+import { ButtonComponent } from '../../components/button/button.component';
+import { InputComponent } from '../../components/input/input.component';
 import { IButton, IInput } from '../../interfaces';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputComponent } from "../../components/input/input.component";
 
 @Component({
   selector: 'app-login-form',
@@ -15,6 +22,8 @@ export class LoginFormComponent implements OnInit {
   submit = output<FormGroup>();
   private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
+  private router = inject(Router);
+
   showComponent = false;
 
   emailInput: IInput = {
@@ -41,21 +50,21 @@ export class LoginFormComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
 
   submitButtonData: IButton = {
     class: 'dark',
     size: 'large',
     label: 'Log in',
-    disabled: true
+    disabled: true,
   };
 
   buttonData: IButton = {
     class: 'light',
     size: 'large',
     label: 'Sign up',
-    disabled: false
+    disabled: false,
   };
 
   ngOnInit(): void {
@@ -73,8 +82,14 @@ export class LoginFormComponent implements OnInit {
     this.form.reset();
   }
 
+  auth() {
+    console.log(this.form.value);
+  }
   submitForm() {
     this.submit.emit(this.form.getRawValue());
   }
 
+  redirectToRegister() {
+    this.router.navigate(['users']);
+  }
 }

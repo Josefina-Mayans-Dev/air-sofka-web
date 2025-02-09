@@ -1,7 +1,7 @@
-import { Component, input, OnChanges, output, SimpleChanges } from '@angular/core';
-import { IButton } from '../../interfaces/button.interface';
 import { CommonModule } from '@angular/common';
+import { Component, input, OnChanges, output, SimpleChanges } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { IButton } from '../../interfaces/button.interface';
 
 @Component({
   selector: 'app-button',
@@ -23,4 +23,4 @@ export class ButtonComponent implements OnChanges{
     }
   }
 
-}
+} 

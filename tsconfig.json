@@ -38,6 +38,9 @@
       ],
       "shared": [
         "./dist/shared"
+      ],
+      "users": [
+        "./dist/users"
       ]
     },
     "importHelpers": true,

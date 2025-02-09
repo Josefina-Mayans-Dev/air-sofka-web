@@ -1,10 +1,9 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
-  ActivatedRoute,
   NavigationEnd,
   Router,
   RouterLink,
-  RouterOutlet,
+  RouterOutlet
 } from '@angular/router';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { LoadingComponent } from 'shared';
