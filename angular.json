@@ -376,9 +376,7 @@
           }
         }
       }
-    }
-  },
-    "users": {
+    },"users": {
       "projectType": "library",
       "root": "projects/users",
       "sourceRoot": "projects/users/src",
@@ -411,5 +409,8 @@
         }
       }
     }
+    
+  }
+    
   
 }

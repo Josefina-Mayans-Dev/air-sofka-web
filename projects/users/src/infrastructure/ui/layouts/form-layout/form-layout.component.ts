@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent, LoginComponent } from 'shared';
+import { HeaderComponent, LoginFormComponent } from 'shared';
 
 @Component({
   selector: 'lib-form-layout',
-  imports: [RouterOutlet,HeaderComponent,LoginComponent],
+  imports: [RouterOutlet,HeaderComponent,LoginFormComponent],
   templateUrl: './form-layout.component.html',
   styleUrl: './form-layout.component.scss'
 })

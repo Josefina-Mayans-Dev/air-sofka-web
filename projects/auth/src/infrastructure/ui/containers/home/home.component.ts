@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DropdownComponent, IDropdown } from 'shared';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DropdownComponent, IDropdown } from 'shared';
 
 @Component({
   selector: 'lib-home',
