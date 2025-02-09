@@ -1,49 +1,60 @@
 <form [formGroup]="pasajeroForm" class="pasajero-form">
-  <label class="pasajero-form__label">Tratamiento: </label>
-  <select formControlName="tratamiento" class="pasajero-form__select">
-    <option value="Sr">Sr.</option>
-    <option value="Sra">Sra.</option>
-  </select>
+  <div class="grid">
+    <div class="col-5">
+      <app-dropdown [dropdownData]="dropdowTratamiento" [formGroup]="pasajeroForm"> </app-dropdown>
+    </div>
+  </div>
 
-  <label class="pasajero-form__label">Nombre: </label>
-  <input type="text" formControlName="nombre" class="pasajero-form__input" />
+  <div class="grid">
+    <div class="col-5">
+      <app-input [inputData]="nombreInput" [formGroup]="pasajeroForm"></app-input>
+    </div>
+  </div>
 
-  <label class="pasajero-form__label">Apellido: </label>
-  <input type="text" formControlName="apellido" class="pasajero-form__input" />
+  <div class="grid">
+    <div class="col-5">
+      <app-input [inputData]="apellidoInput" [formGroup]="pasajeroForm"></app-input>
+    </div>
+  </div>
 
   @if (isFirst) {
   <div class="pasajero-form__contacto">
     <h3 class="pasajero-form__contacto-title">Persona de Contacto</h3>
-    <label class="pasajero-form__label">Correo electrónico: </label>
-    <input type="email" formControlName="correo" class="pasajero-form__input" />
-    <label class="pasajero-form__label">Confirmar correo electrónico: </label>
-    <input type="email" formControlName="correoConfirmar" class="pasajero-form__input" />
-    <label class="pasajero-form__label">Prefijo telefónico del país: </label>
-    <!-- <input type="text" formControlName="prefijoTelefono" class="pasajero-form__input" /> -->
-    <select formControlName="prefijoTelefono" class="pasajero-form__select">
-      <option value="+593">Ecuador (+593)</option>
-      <option value="+34">España (+34)</option>
-      <option value="+93">Afganistán (+93)</option>
-      <option value="+355">Albania (+355)</option>
-      <option value="+49">Alemania (+49)</option>
-      <option value="+376">Andorra (+376)</option>
-      <option value="+244">Angola (+244)</option>
-      <option value="+1264">Anguila (+1264)</option>
-      <option value="+591">Bolivia (+591)</option>
-      <option value="+55">Brasil (+55)</option>
-      <option value="+56">Chile (+56)</option>
-      <option value="+57">Colombia (+57)</option>
-      <option value="+51">Perú (+51)</option>
-      <option value="+58">Venezuela (+58)</option>
-      <option value="+54">Argentina (+54)</option>
-      <option value="+598">Uruguay (+598)</option>
-    </select>
-    <label class="pasajero-form__label">Número de teléfono: </label>
-    <input type="text" formControlName="numeroTelefono" class="pasajero-form__input" />
-    <label class="pasajero-form__checkbox-label terminos-condiciones">
-      <input type="checkbox" formControlName="aceptaTerminos" class="pasajero-form__checkbox" />
-      Entiendo y acepto que mis datos personales serán tratados de acuerdo con la política de privacidad de AIR EUROPA.
-    </label>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-input [inputData]="correoInput" [formGroup]="pasajeroForm"></app-input>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-input [inputData]="correoConfirmarInput" [formGroup]="pasajeroForm"></app-input>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-dropdown [dropdownData]="prefijoTelefonoDropdown" [formGroup]="pasajeroForm"> </app-dropdown>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-input [inputData]="numeroTelefonoInput" [formGroup]="pasajeroForm"></app-input>
+      </div>
+    </div>
+
+    <div class="form-group terminos-condiciones">
+      <label class="pasajero-form__checkbox-label">
+        <input type="checkbox" formControlName="aceptaTerminos" />
+        <span>Entiendo y acepto que mis datos personales serán tratados de acuerdo con la política de privacidad de AIR
+          EUROPA.</span>
+        @if(pasajeroForm.get('aceptaTerminos')?.errors && pasajeroForm.get('aceptaTerminos')?.touched) {
+        <div class="error-message">Acepte terminos y condiciones</div>
+        }
+      </label>
+    </div>
   </div>
   }
 </form>

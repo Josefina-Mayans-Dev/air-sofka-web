@@ -14,7 +14,7 @@
       (change)="dropdownChange()">
         @for (option of dropdownData()?.options; track $index) {
             <option class="dropdown-content__dropdown__option" [value]="option.value">{{ option.label }}
-                <span>test</span>
+                <!-- <span>test</span> -->
             </option>
         }
     </select>

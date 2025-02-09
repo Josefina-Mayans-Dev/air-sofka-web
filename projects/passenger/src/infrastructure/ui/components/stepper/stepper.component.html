@@ -1,28 +1,20 @@
 <div class="stepper">
-  <div class="steps">
-    <div
-      class="step"
-      *ngFor="let step of steps; let i = index"
-      [class.active]="i === currentStepIndex"
-    >
+  <div class="stepper__steps">
+    <div class="stepper__step" *ngFor="let step of steps; let i = index" [class.stepper__step--active]="i === currentStepIndex">
       {{ step }}
     </div>
   </div>
 
-  <div class="content">
+  <div class="stepper__content">
     <ng-content></ng-content>
   </div>
 
-  <div class="actions">
-    <button
-      class="previous-button"
-      (click)="goToPreviousStep()"
-      [disabled]="currentStepIndex === 0"
-    >
+  <div class="stepper__actions">
+    <button class="stepper__button stepper__button--previous" (click)="goToPreviousStep()" [disabled]="currentStepIndex === 0">
       Pasajero anterior
     </button>
-    <button class="next-button" (click)="goToNextStep()" [disabled]="isNextButtonDisabled">
+    <button class="stepper__button stepper__button--next" (click)="goToNextStep()" [disabled]="isNextButtonDisabled">
       {{ currentStepIndex === steps.length - 1 ? 'Completar' : 'Siguiente' }}
     </button>
   </div>
-</div> 
+</div>
