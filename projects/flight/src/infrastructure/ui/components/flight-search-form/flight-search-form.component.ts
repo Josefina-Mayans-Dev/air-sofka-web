@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, output } from '@angular/core';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 import { DateRangePickerComponent } from '../date-range-picker/date-range-picker.component';
 import { DestinationComponent } from '../destination/destination.component';
@@ -17,28 +17,30 @@ import { LocationOption } from '../../interfaces/location-option';
   styleUrl: './flight-search-form.component.scss'
 })
 export class FlightSearchFormComponent implements OnInit {
-  title = 'my-angular-app';
-  selectedOrigin: LocationOption | null = null;
-  selectedTripType: string = '';
-  opciones = ['Ida y vuelta', 'Ida', 'Multidestinos'];
-  opcionSeleccionada = 'Ida y vuelta';
+
+  opciones = ['Round Trip', 'One Way', 'Multi-City'];
+  opcionSeleccionada = 'Round Trip';
+
+  filters = output<string>();
+
+  pagarConMillas: boolean = false;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  onOriginSelected(location: any): void {
-    this.selectedOrigin = location;
-    console.log('Selected Origin:', location);
-  }
-
-  onTripTypeSelected(tripType: string): void {
-    this.selectedTripType = tripType;
-  }
+  ngOnInit(): void { }
 
   onSelectionChange(nuevaOpcion: string) {
     this.opcionSeleccionada = nuevaOpcion;
+  }
+
+  onPagarConMillasChange(event: any) {
+    this.pagarConMillas = event.target.checked;
+    console.log('Pagar con millas (change event):', this.pagarConMillas);
+  }
+
+  onSearchFlight() {
+    console.log("emitiendo mensaje");
+    this.filters.emit("mensaje");
   }
 
 }
