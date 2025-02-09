@@ -34,7 +34,7 @@
     }
   
     &__select {
-      width: auto;
+      width: 300px;
       cursor: pointer;
     }
   
@@ -91,4 +91,12 @@
       color: red;
       font-size: 0.8em;
     }
+  }
+  .error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+  }
+  span{
+    margin-left: 7px;
   }
