@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { DetailFlightComponent } from './detail-flight.component';
 
 describe('DetailFlightComponent', () => {
-  let component: DetailFlightComponent;
-  let fixture: ComponentFixture<DetailFlightComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DetailFlightComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(DetailFlightComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(DetailFlightComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
+
+  it('should render spans', () => {
+    const fixture = TestBed.createComponent(DetailFlightComponent);
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('span')).toBeTruthy();
+  });
+
 });

@@ -1,10 +1,20 @@
 import { TestBed } from "@angular/core/testing";
 import { ButtonComponent } from "./button.component";
+import { ActivatedRoute } from "@angular/router";
+import { of } from "rxjs";
 
 describe('ButtonComponent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [ButtonComponent],
+        providers: [
+          {
+            provide: ActivatedRoute,
+            useValue: {
+              params: of({})
+            }
+          }
+        ]
       }).compileComponents();
     });
   

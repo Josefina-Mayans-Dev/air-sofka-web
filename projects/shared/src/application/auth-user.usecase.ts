@@ -5,7 +5,7 @@ import { IAuthResponse } from "../domain/model/auth-response.model";
 import { AuthUserService } from "../infrastructure/services/api/auth-user.service";
 import { IAuthRequest } from "../domain/model/auth-request.model";
 import { Router } from "@angular/router";
-import { TokenService } from "../public-api";
+import { LoadingService, TokenService } from "../public-api";
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +16,7 @@ export class AuthUserUseCase {
     private router = inject(Router);
     private tokenService = inject(TokenService);
     private subscriptions: Subscription;
+    private loaderService = inject(LoadingService);
   
     //#region Observables
     authUser$(): Observable<IAuthResponse> {
@@ -37,15 +38,16 @@ export class AuthUserUseCase {
         this._service.authUser(user)
           .pipe(
             tap(result => {
-                if (result!.token) {
-                    this._state.users.auth.set(result);
-                    if (result?.token) {
-                      localStorage.setItem('email', result.email);
-                      localStorage.setItem('role', result.role);
-                      this.tokenService.handleToken(result.token);
-                      this.router.navigate(['/admin']);
-                    }
-                }
+              this.loaderService.setLoading(false);
+              if (result!.token) {
+                  this._state.users.auth.set(result);
+                  if (result?.token) {
+                    localStorage.setItem('email', result.email);
+                    localStorage.setItem('role', result.role);
+                    this.tokenService.handleToken(result.token);
+                    this.router.navigate(['/admin']);
+                  }
+              }
             })
           )
           .subscribe()
