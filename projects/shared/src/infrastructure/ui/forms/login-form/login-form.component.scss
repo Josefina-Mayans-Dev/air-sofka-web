@@ -1,0 +1,139 @@
+@use "sass:color";
+@use "../../styles/abstracts/mixins" as mixins;
+@use '../../styles/abstracts/variables' as variables;
+
+.login {
+    @include mixins.content-flex(center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &__backdrop {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        pointer-events: auto;
+        -webkit-tap-highlight-color: transparent;
+        transition: opacity .4s cubic-bezier(.25,.8,.25,1);
+        background-color: variables.$secondary-color;
+        opacity: .75;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        background-color: variables.$white-color;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+
+        &__close {
+            position: absolute;
+            margin-left: 915px;
+            margin-top: 25px;
+
+            &:hover {
+                cursor: pointer;
+                opacity: .5;
+            }
+        }
+    }
+
+    &__form {
+        padding: 108px 60px 64px 75px;
+        width: 598px;
+
+        h2 {
+            margin: 0 0 40px;
+            width: 335px;
+            font: 700 1.5rem/1.33 AeRadar;
+        }
+
+        &__field {
+            margin-bottom: 30px;
+        }
+
+        &__common {
+            display: block;
+            margin-top: 40px;
+            font-size: 12px;
+            font-weight: 700;
+            color: variables.$tertiary-color;
+            text-decoration: none;
+
+            span {
+                display: block;
+                padding: 8px 0;
+            }
+        }
+
+        &__remember {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 14px 0 35px;
+
+            input {
+                width: 16px;
+                height: 16px;
+                border: 1px solid variables.$text-color;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            label {
+                font-size: 12px;
+                color: variables.$text-color;
+            }
+        }
+    }
+
+    &__registration {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 76px 0 43px;
+        width: 367px;
+        background: variables.$primary-color;
+        color: variables.$white-color;
+        justify-content: center;
+        text-align: center;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        h3 {
+            margin: 34px auto 12px;
+            width: 200px;
+            font: 700 1.25rem/1.4 AeRadar;
+        }
+        
+        &__img {
+            padding-left: 10px;
+            margin: auto;
+
+            img {
+                height: 170px;
+                width: 250px;
+            }
+        }
+
+        &__details {
+            padding: 0 32px;
+            font-size: 14px;
+            line-height: 1.5;
+            
+            p {
+                width: 300px;
+                margin: 0 auto 36px;            
+            }
+
+            app-button {
+                margin: 0 12px;
+            }
+        }
+    }
+}

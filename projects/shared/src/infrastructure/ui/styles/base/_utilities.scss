@@ -1,0 +1,14 @@
+@use '../abstracts/variables' as variables;
+
+
+.title-h1{
+    color: variables.$primary-color;
+    text-align: start;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: normal;
+    font-family: AERadar;
+    letter-spacing: normal;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

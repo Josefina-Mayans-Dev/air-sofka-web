@@ -1,0 +1,60 @@
+<form [formGroup]="pasajeroForm" class="pasajero-form">
+  <div class="grid">
+    <div class="col-5">
+      <app-dropdown [dropdownData]="dropdowTratamiento" [formGroup]="pasajeroForm"> </app-dropdown>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-5">
+      <app-input [inputData]="nombreInput" [formGroup]="pasajeroForm"></app-input>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-5">
+      <app-input [inputData]="apellidoInput" [formGroup]="pasajeroForm"></app-input>
+    </div>
+  </div>
+
+  @if (isFirst) {
+  <div class="pasajero-form__contacto">
+    <h3 class="pasajero-form__contacto-title">Persona de Contacto</h3>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-input [inputData]="correoInput" [formGroup]="pasajeroForm"></app-input>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-input [inputData]="correoConfirmarInput" [formGroup]="pasajeroForm"></app-input>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-dropdown [dropdownData]="prefijoTelefonoDropdown" [formGroup]="pasajeroForm"> </app-dropdown>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-5">
+        <app-input [inputData]="numeroTelefonoInput" [formGroup]="pasajeroForm"></app-input>
+      </div>
+    </div>
+
+    <div class="form-group terminos-condiciones">
+      <label class="pasajero-form__checkbox-label">
+        <input type="checkbox" formControlName="aceptaTerminos" />
+        <span>Entiendo y acepto que mis datos personales serán tratados de acuerdo con la política de privacidad de AIR
+          EUROPA.</span>
+        @if(pasajeroForm.get('aceptaTerminos')?.errors && pasajeroForm.get('aceptaTerminos')?.touched) {
+        <div class="error-message">Acepte terminos y condiciones</div>
+        }
+      </label>
+    </div>
+  </div>
+  }
+</form>

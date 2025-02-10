@@ -1,0 +1,90 @@
+.flight-leg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  position: relative;
+
+  &__departure,
+  &__arrival {
+    text-align: center;
+    width: 20%;
+  }
+
+  &__time {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__airport {
+    font-size: 0.875rem;
+    color: #777;
+  }
+
+  &__stop {
+    gap: 15px;
+    position: absolute;
+    
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__stop-airport {
+    font-size: 0.75rem;
+    color: #555;
+    margin-bottom: 2px;
+  }
+
+  &__stop-duration {
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  &__stop-dot {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #0f2367;
+    transform: translateY(-50%);
+  }
+
+
+  &__arrow {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+
+    hr {
+      border: none;
+      border-top: 1px solid #9ca3af;
+      width: 100%;
+    }
+
+    &--start,
+    &--end {
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #0f2367;
+      transform: translateY(-50%);
+    }
+
+
+    &--end {
+      left: 80%;
+    }
+  }
+}

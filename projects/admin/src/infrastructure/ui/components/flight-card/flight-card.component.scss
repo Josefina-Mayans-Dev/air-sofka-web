@@ -1,0 +1,48 @@
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  & img {
+    width: 80px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+
+      &--label {
+        font-weight: bold;
+        color: #333;
+      }
+    }
+
+    &__edit-button {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}

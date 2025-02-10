@@ -1,0 +1,111 @@
+@use '../../../ui/styles/abstracts/variables' as variables;
+
+.dropdown-content {
+  position: relative;
+
+  &__dropdown {
+    width: 100%;
+    padding: 24px 10px 6px 10px;
+    border: 0px solid transparent;
+    border-bottom: 1px solid #8a8a8aaf;
+    outline: none;
+    font-size: .875rem;
+    transition: border-color 0.3s;
+    background-color: variables.$white-color;
+    color: variables.$black-color;
+    appearance: none;
+    cursor: pointer;
+    
+
+    background-image: url('../../../ui/assets/svgs/down.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    padding-right: 30px;
+
+    &__option {  
+        padding: 8px 12px;
+        color: variables.$black-color;
+        font-size: 15px;
+        font-family: Lato;
+        border-bottom: 1px solid #eee;
+
+        &:hover, &:focus {
+            cursor: pointer;
+            background-color: #d5e1f9;
+
+        }
+   
+        &:checked {
+          background-color: variables.$secondary-color;
+          color: variables.$white-color;
+        }
+   
+        &:disabled {
+           color: #999;
+           background-color: #f2f2f2;
+        }
+    }
+
+    &--error {
+        background-image: none;
+    }
+
+    
+    &--not-label {
+      padding: 4px 6px;
+    }
+
+    &--small {
+      font-size: 12px;
+    }
+
+    &:focus {
+      border-color: variables.$primary-color;
+    }
+
+    &:hover {
+      border-color: variables.$primary-color;
+    }
+
+    &:focus-within + label,
+    &--selected + label {
+      top: 4px;
+      font-size: .75rem;
+      color: variables.$text-color;
+    }
+  }
+
+  &__float-label {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    font-size: .875rem;
+    color: variables.$text-color-secondary;
+    pointer-events: none;
+    transition: all 0.3s;
+    padding: 0;
+  }
+
+  &__dropdown-icon {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+
+    &--not-label {
+      top: 2px;
+      right: 8px;
+    }
+  }
+
+  &__error-message {
+    color: variables.$error-color;
+    font-size: 12px;
+    padding: 2px 8px 2px 8px;
+    border-color: variables.$error-color;
+  }
+
+  .ng-invalid.ng-touched {
+      border-color: variables.$error-color;
+  }
+}

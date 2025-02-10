@@ -95,6 +95,21 @@
               {
                 "glob": "**/*",
                 "input": "projects/app/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/shared/src/infrastructure/ui/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/users/src/infrastructure/ui/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/flight/src/infrastructure/ui/assets",
+                "output": "/assets"
               }
             ],
             "styles": [
@@ -163,6 +178,242 @@
           }
         }
       }
+    },
+    "seat-availability": {
+      "projectType": "library",
+      "root": "projects/seat-availability",
+      "sourceRoot": "projects/seat-availability/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/seat-availability/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/seat-availability/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/seat-availability/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/seat-availability/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "admin": {
+      "projectType": "library",
+      "root": "projects/admin",
+      "sourceRoot": "projects/admin/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "projects/admin/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/admin/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/admin/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/admin/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "passenger": {
+      "projectType": "library",
+      "root": "projects/passenger",
+      "sourceRoot": "projects/passenger/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/passenger/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/passenger/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/passenger/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/passenger/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "pay": {
+      "projectType": "library",
+      "root": "projects/pay",
+      "sourceRoot": "projects/pay/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pay/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pay/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pay/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/pay/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "flight": {
+      "projectType": "library",
+      "root": "projects/flight",
+      "sourceRoot": "projects/flight/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/flight/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/flight/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/flight/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/flight/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "booking": {
+      "projectType": "library",
+      "root": "projects/booking",
+      "sourceRoot": "projects/booking/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/booking/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/booking/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/booking/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/booking/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },"users": {
+      "projectType": "library",
+      "root": "projects/users",
+      "sourceRoot": "projects/users/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/users/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/users/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/users/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/users/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
+    
+  },
+  "cli": {
+    "analytics": "ae7cc9c8-6132-4c47-923f-781530ea6602"
   }
+    
+  
 }

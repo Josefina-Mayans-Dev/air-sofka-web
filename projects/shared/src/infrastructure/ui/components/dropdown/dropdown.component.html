@@ -1,0 +1,35 @@
+<div class="dropdown-content" [formGroup]="formGroup()!">
+    <select class="dropdown-content__dropdown" required
+      [ngClass]="{
+        'dropdown-content__dropdown--not-label': !dropdownData()?.label,
+        'dropdown-content__dropdown--small': dropdownData()?.size == 'small',
+        'dropdown-content__dropdown--error': validDropdown(),
+        'dropdown-content__dropdown--selected': formGroup()!.get(dropdownData()!.formControlName)?.value
+      }"
+      [id]="dropdownData()?.id"
+      [formControlName]="dropdownData()?.formControlName ?? ''"
+      [required]="dropdownData()?.required ?? false"
+      [attr.aria-label]="dropdownData()?.label"
+      [attr.aria-required]="dropdownData()?.required ?? null"
+      (change)="dropdownChange()">
+        @for (option of dropdownData()?.options; track $index) {
+            <option class="dropdown-content__dropdown__option" [value]="option.value">{{ option.label }}
+                <!-- <span>test</span> -->
+            </option>
+        }
+    </select>
+  
+    @if (dropdownData()?.label) {
+    <label class="dropdown-content__float-label" [for]="dropdownData()?.id">{{ dropdownData()?.label }}</label>
+    }  
+
+    @if (validDropdown()) {
+  
+        <span class="dropdown-content__dropdown-icon">
+        <img src="assets/svgs/danger.svg" alt="dropdown-icon" height="16px" />
+        </span>
+        @if (formGroup()!.get(dropdownData()!.formControlName)?.errors?.['required']) {
+            <span class="dropdown-content__error-message">{{ dropdownData()?.label }} is required.</span>
+        } 
+    }
+</div> 

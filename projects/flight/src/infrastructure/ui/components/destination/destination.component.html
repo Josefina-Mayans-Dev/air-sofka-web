@@ -1,0 +1,15 @@
+<div class="location-origin">
+    <label for="origin">Destination</label>
+    <input type="text" id="origin" [(ngModel)]="searchTerm" (input)="onSearchTermChange()" (focus)="onFocus()"
+        (blur)="onBlur()" placeholder="Elige Destination" />
+
+    <div class="dropdown-list" *ngIf="showDropdown">
+        <ul>
+            <li class="section-header"><i class="fas fa-globe"></i> Países</li>
+            <li *ngFor="let location of filteredLocations" (click)="selectLocation(location)">
+                {{ location.name }}, {{ location.country }} <span>{{ location.code }}</span>
+            </li>
+        </ul>
+        <a href="#" class="footer-link"><i class="fas fa-globe"></i> Conoce nuestras rutas</a>
+    </div>
+</div>

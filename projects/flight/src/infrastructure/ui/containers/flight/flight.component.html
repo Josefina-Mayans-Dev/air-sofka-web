@@ -1,0 +1,9 @@
+@if(selectIda){
+<h1>Vuelos Ida</h1>
+<lib-data-card [data]="list" (cardClicked)="onSelectedFlightIda($event)" />
+}
+
+@if(!selectIda){
+<h1>Vuelos Regreso</h1>
+<lib-data-card [data]="returnList" (cardClicked)="onSelectedFlightVuelta($event)" />
+}

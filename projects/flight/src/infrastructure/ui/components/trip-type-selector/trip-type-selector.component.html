@@ -1,0 +1,13 @@
+<div class="custom-select">
+    <div class="select-input" (click)="toggleOptions()">
+        {{ selectedOption }}
+        <span class="arrow" *ngIf="!isOpen">▼</span>
+        <span class="arrow" *ngIf="isOpen">▲</span>
+    </div>
+
+    <ul class="options-list" *ngIf="isOpen">
+        <li *ngFor="let option of options" (click)="selectOption(option)">
+            {{ option }}
+        </li>
+    </ul>
+</div>

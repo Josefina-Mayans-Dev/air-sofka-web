@@ -1,0 +1,26 @@
+<div class="flight-leg">
+  <div class="flight-leg__departure">
+    <span class="flight-leg__time">{{ leg().departureTime }}</span>
+    <span class="flight-leg__airport">{{ leg().departureAirportCode }}</span>
+  </div>
+
+  <div class="flight-leg__stop">
+    @if (leg().stopAirportCode) {
+    <span class="flight-leg__stop-airport">{{ leg().stopAirportCode }}</span>
+    <span class="flight-leg__stop-dot"></span>
+    <span class="flight-leg__stop-duration">{{ leg().stopDuration }}</span>
+    }
+  </div>
+  <div class="flight-leg__arrow">
+    <span class="flight-leg__arrow--start"></span>
+    <hr />
+    <span class="flight-leg__arrow--end"></span>
+  </div>
+
+
+
+  <div class="flight-leg__arrival">
+    <span class="flight-leg__time">{{ leg().arrivalTime }}</span>
+    <span class="flight-leg__airport">{{ leg().arrivalAirportCode }}</span>
+  </div>
+</div>

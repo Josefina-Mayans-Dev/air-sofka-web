@@ -1,0 +1,15 @@
+<h1  class="title-h1">Passenger</h1>
+<lib-resume-passenger-card
+  [name]="passengers[0]?.treatment+' '+passengers[0]?.name+' '+passengers[0]?.lastName"
+  [email]="contact?.email"
+  [phone]="contact?.prefix+' '+contact?.telephoneNumber"
+  type="Adult"
+/>
+@for (item of passengers; track $index) {
+  <lib-resume-passenger-card
+  [name]="item?.treatment+' '+item?.name+' '+item?.lastName"
+  [email]=""
+  [phone]=""
+  [type]=""
+/>
+}

@@ -1,0 +1,181 @@
+.seat-map-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.seat-map-header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+}
+
+.aircraft-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.seat-map-scroll {
+    max-height: 600px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.seat-map-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.seat-group {
+    display: flex;
+    gap: 4px;
+}
+
+.seat {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) {
+        background: #e6e6e6;
+    }
+
+    &--occupied {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+
+    &--selected {
+        background: #98bcf5;
+        color: white;
+        border-color: #12245f;
+        border-width: 3px;
+    }
+
+    &--xl {
+        background: #fbcfe8;
+
+        &:hover:not(:disabled) {
+            background: #f9a8d4;
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    &--first {
+        background-color: #ffd700; // gold for first class
+
+        &:hover:not(:disabled) {
+            background-color: #ffed4a;
+        }
+    }
+
+    &--business {
+        background-color: rgb(137, 241, 137);
+
+        &:hover:not(:disabled) {
+            background-color: #cbd5e0;
+        }
+    }
+
+    &--economy {
+        background-color: white; // white for economy
+
+        &:hover:not(:disabled) {
+            background-color: #f7fafc;
+        }
+    }
+}
+
+.booking-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.book-button {
+    padding: 8px 16px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+        background: #2563eb;
+    }
+}
+
+.seat-legend {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-box {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    &--occupied {
+        background: #ccc;
+    }
+
+    &--first {
+        background: #ffd700;
+    }
+
+    &--business {
+        background: rgb(137, 241, 137);
+    }
+
+    &--economy {
+        background: #fbcfe8;
+    }
+
+    &--selected {
+        background: #98bcf5;
+    }
+}
