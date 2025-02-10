@@ -30,7 +30,7 @@ export class FlightSearchFormComponent implements OnInit {
   locationOptionDestination: LocationOption;
   selectedStartDate: Date | null = null;
   selectedEndDate: Date | null = null;
-  selectedCountPassenger: number;
+  selectedCountPassenger: number  = 1;
 
   constructor() { }
 
