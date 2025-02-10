@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, output } from '@angular/core';
 import { SeatService } from '../../../services/seat.service';
 import { ISeat, SeatRow, SeatStatus, SeatClass } from '../../../../domain/model/seat.model';
 
@@ -8,13 +8,16 @@ import { ISeat, SeatRow, SeatStatus, SeatClass } from '../../../../domain/model/
   styleUrls: ['./seat-map.component.scss']
 })
 export class SeatMapComponent implements OnInit {
+  
   @Input() flightId!: string;
   
   seatMap: SeatRow[] = [];
   selectedSeats: string[] = [];
+  selectedSeatsId: string[] = [];
   loading = false;
   error: string | null = null;
   SeatStatus = SeatStatus;
+  onChoseSeat  =  output<string[]>()
 
   constructor(private seatService: SeatService) {}
 
@@ -45,9 +48,11 @@ export class SeatMapComponent implements OnInit {
     const index = this.selectedSeats.indexOf(seat.number);
     if (index === -1) {
       this.selectedSeats.push(seat.number);
+      this.selectedSeatsId.push(seat.id);
       seat.status = SeatStatus.SELECTED;
     } else {
       this.selectedSeats.splice(index, 1);
+      this.selectedSeatsId.splice(index, 1);
       seat.status = SeatStatus.AVAILABLE;
     }
   }
@@ -76,6 +81,10 @@ export class SeatMapComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
+    this.onChoseSeat.emit(this.selectedSeatsId);
+    
+    
+    return;
     this.seatService.bookSeats(this.flightId, this.selectedSeats).subscribe({
       next: (response) => {
         if (response.success) {

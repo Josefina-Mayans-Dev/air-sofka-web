@@ -1,10 +1,10 @@
+<h1 class="title-h1">Your Flight</h1>
+@for (item of flights; track $index) {
 <lib-flight-card
-  [title]="flightData.title"
-  [date]="flightData.date"
-  [legs]="flightData.legs"
+  [title]="item.title"
+  [date]="item.date"
+  [legs]="item.legs"
+  [details]="item.detail"
 ></lib-flight-card>
-<lib-flight-card
-  [title]="flightData.title"
-  [date]="flightData.date"
-  [legs]="flightData.legs"
-></lib-flight-card>
+
+}

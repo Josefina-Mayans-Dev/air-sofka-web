@@ -22,6 +22,7 @@ export class GetSeatsUsecase {
     return this._state.seats.selectedSeats.$();
   }
 
+  
   error$(): Observable<string | null> {
     return this.errorSubject.asObservable();
   }

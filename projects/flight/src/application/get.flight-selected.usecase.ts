@@ -11,7 +11,7 @@ import { IFlightSelected } from '../domain/model/flight-selected';
 @Injectable({
   providedIn: 'root',
 })
-export class GetFlightsUseCase {
+export class GetFlightsSelectedUseCase {
   private readonly _state = inject(State);
   private subscriptions!: Subscription;
 

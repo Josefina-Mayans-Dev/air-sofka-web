@@ -12,12 +12,14 @@ export class SeatsState {
   //#region Subjects
   private readonly seats$ = new BehaviorSubject<ISeat[]>([]);
   private readonly selectedSeats$ = new BehaviorSubject<ISeat[]>([]);
+  private readonly selectedSeatsId$ = new BehaviorSubject<string[]>([]);
   //#endregion
 
   store() {
     return {
       seats: this._factory.state(this.seats$),
-      selectedSeats: this._factory.state(this.selectedSeats$)
+      selectedSeats: this._factory.state(this.selectedSeats$),
+      selectedSeatsId: this._factory.state(this.selectedSeatsId$)
     }
   }
 }

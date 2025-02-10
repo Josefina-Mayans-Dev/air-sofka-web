@@ -8,14 +8,12 @@
 
     <div class="flight-card__legs">
       @for (leg of legs(); track $index) {
-      <lib-flight-leg [leg]="leg"></lib-flight-leg>
+        <lib-route-flight [routeData]="leg"></lib-route-flight>
       }
     </div>
 
-    <div class="flight-card__footer">
-      <p class="flight-card__duration">Duration: {{ duration() }}</p>
-      <p class="flight-card__operator">Operated by: {{ operatedBy() }}</p>
-      <a href="#" class="flight-card__details-link">View itinerary details</a>
+    <div class="flight-card__right">
+      <lib-detail-flight [detailsData]="details()"></lib-detail-flight>
     </div>
 
   </div>

@@ -8,5 +8,5 @@ import { Component, input } from '@angular/core';
 })
 export class PriceRowComponent {
   label = input<string>('');
-  price = input<string>('');
+  price = input<number>(0);
 }
