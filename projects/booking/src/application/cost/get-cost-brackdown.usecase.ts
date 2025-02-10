@@ -25,9 +25,10 @@ export class GetCostBreakdownUsecase {
   }
 
   execute(costRequest: ICostBreakdownRequest): void {
+    const userId: string   =  localStorage.getItem('id');
     this.subscriptions.add(
       this._service
-        .getCostBreakdown(costRequest)
+        .getCostBreakdown({...costRequest, userId})
         .pipe(
             tap({
                 next: (costBreakdown) => {

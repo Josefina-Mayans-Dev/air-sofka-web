@@ -38,6 +38,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
   public contactSave$: Observable<IPassengerContact>;
   public listPassengers$: Observable<IPassenger[]>;
   public selectedSeatsId$: Observable<string[]>;
+  request: IBookingRequest;
 
   flightSumary: IFlightSummary = {
     title: 'Flight summary',
@@ -64,6 +65,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
 
   onContinue() {
     console.log('Continue clicked!');
+    this._createBookingUseCase.execute(this.request);
   }
 
   ngOnInit(): void {
@@ -143,8 +145,8 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
           bookingStatus: 'CONFIRMED',
           bookingPrice: costBreakdown?.ticketPrice,
           discount: costBreakdown?.discount,
-          flightId: 'FLIGHT-ID',
-          userId: 'USER-ID',
+          flightId: flight?.origin.id, 
+          userId: null,
           paymentMethod: 'TEST-PAY-METHOD',
           email: contact?.email,
           prefix: contact?.prefix,
@@ -169,7 +171,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
         if (request) {
           console.log('Booking Request:', request);
 
-          //this._createBookingUseCase.execute(request);
+          this.request = request;
         }
       })
     ).subscribe();

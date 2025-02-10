@@ -53,7 +53,7 @@ export class PriceBreakdownContainerComponent implements OnInit, OnDestroy {
       passengers: this.seatsIds.map((id) => {
         return { seatId: id };
       }),
-      isFrequent: true,
+      userId: null,
     });
     this._getCostBreakdown.constBreadown$().pipe(
       tap((costBreakdown) => {

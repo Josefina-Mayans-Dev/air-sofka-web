@@ -25,9 +25,11 @@ export class CreateBookingUsecase {
   }
 
   execute(request: IBookingRequest): void {
+
+    const userId: string   =  localStorage.getItem('id');
       this.subscriptions.add(
         this._service
-          .makeBooking(request)
+          .makeBooking({...request, userId})
           .pipe(
               tap({
                   next: (booking) => {

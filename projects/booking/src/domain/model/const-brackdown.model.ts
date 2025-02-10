@@ -20,5 +20,5 @@ export interface ICostBreakdown {
 
 export interface ICostBreakdownRequest {
     passengers: { seatId: string }[];
-    isFrequent: boolean;
+    userId: string;
 }

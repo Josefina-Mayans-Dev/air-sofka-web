@@ -39,7 +39,7 @@ export class GetFlightsUseCase {
           tap((flights) => {
             this._state.flights.set(flights);
             this._state.flightsSelected.set({ filters: filters });
-            this.router.navigate(['/flight/search']);
+            this.router.navigate(['/search']);
           })
         )
         .subscribe({})

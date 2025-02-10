@@ -31,6 +31,6 @@ export class SelectSeatUseCase {
 
   execute(ids: string[]): void {
     this._state.seats.selectedSeatsId.set(ids);
-    this._router.navigate(['/passenger']);
+    this._router.navigate(['/booking']);
   }
 }
