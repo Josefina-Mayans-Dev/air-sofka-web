@@ -10,7 +10,7 @@ import { IPassenger } from '../../../../domain/model/passenger.model';
 import { IPassengerContact } from '../../../../domain/model/passenger-contact.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { BookingHeaderService } from 'shared';
-import { GetFlightsUseCase, IFlight, IFlightSelected } from 'flight';
+import { GetFlightsSelectedUseCase, GetFlightsUseCase, IFlight, IFlightSelected } from 'flight';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +22,7 @@ export class PassengersComponent implements OnInit, OnDestroy {
   private readonly _useCaseContact = inject(PassengerContactUseCase);
   private readonly _useCasePassengerSave = inject(PassengerSaveUseCase);
   private readonly _useCasePassengerUpdate = inject(PassengerUpdateUseCase);
-  private readonly _useCaseFlightSelected = inject(GetFlightsUseCase);
+  private readonly _useCaseFlightSelected = inject(GetFlightsSelectedUseCase);
 
   private headerService = inject(BookingHeaderService);
   private readonly _router = inject(Router);
