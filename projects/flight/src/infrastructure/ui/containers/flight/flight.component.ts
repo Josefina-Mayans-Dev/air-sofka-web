@@ -134,7 +134,7 @@ export class FlightComponent {
         }
       };
       this._state.flightsSelected.set(updatedState);
-      this.router.navigate(['/seats']);
+      this.router.navigate(['/passenger']);
     });
   }
 

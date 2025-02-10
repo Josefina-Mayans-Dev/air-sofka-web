@@ -26,10 +26,6 @@ export class PassengerCardContainerComponent implements OnInit, OnDestroy {
     this.contactSave$ = this._passengerContact.passengerContact$();
 
     this.getPassengers();
-
-
-
-
   }
 
   getPassengers(){
