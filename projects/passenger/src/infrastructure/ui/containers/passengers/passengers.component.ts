@@ -9,6 +9,7 @@ import { Observable, of, switchMap, tap } from 'rxjs';
 import { IPassenger } from '../../../../domain/model/passenger.model';
 import { IPassengerContact } from '../../../../domain/model/passenger-contact.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-pasajeros',
@@ -19,6 +20,7 @@ export class PassengersComponent implements OnInit, OnDestroy {
   private readonly _useCaseContact = inject(PassengerContactUseCase);
   private readonly _useCasePassengerSave = inject(PassengerSaveUseCase);
   private readonly _useCasePassengerUpdate = inject(PassengerUpdateUseCase);
+  private readonly _router = inject(Router);
 
   public contactSave$: Observable<IPassengerContact>;
   public listPassengers$: Observable<IPassenger[]>;
@@ -44,6 +46,8 @@ export class PassengersComponent implements OnInit, OnDestroy {
 
   onComplete(data: any[]) {
     console.log('Stepper completed:', data);
+    this._router.navigate(['/booking']);
+
   }
 
   updateStep(event: any) {

@@ -1,13 +1,13 @@
 export enum SeatClass {
-  FIRST = 'first',
-  BUSINESS = 'business',
-  ECONOMY = 'economy'
+  FIRST = 'FIRST',
+  BUSINESS = 'BUSINESS',
+  ECONOMY = 'ECONOMY'
 }
 
 export enum SeatStatus {
-  OCCUPIED = 'occupied',
-  AVAILABLE = 'available',
-  SELECTED = 'selected'
+  OCCUPIED = 'OCCUPIED',
+  AVAILABLE = 'AVAILABLE',
+  SELECTED = 'SELECTED'
 }
 
 

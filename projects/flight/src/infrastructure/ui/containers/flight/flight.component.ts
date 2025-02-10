@@ -78,7 +78,9 @@ export class FlightComponent {
         detail: [`Duracion: ${duration}`, `Operado por ITA Airways, Air Europa, Copa Airlines`],
         ref: 'See details'
       },
-      price: flight.price
+      price: flight.price,
+      idPlane: flight.idPlane,
+      id: flight.id
     };
   }
 
@@ -103,13 +105,13 @@ export class FlightComponent {
       const updatedState: IFlightSelected = {
         ...currentState,
         origin: {
-          id: '',
+          id: data.id,
           origin: data.route.departureAirportCode,
           destination: data.route.arrivalAirportCode,
           departure: data.route.departureTime,
           arrival: data.route.arrivalTime,
           price: data.price,
-          idPlane: ''
+          idPlane: data.idPlane
         }
       };
       this._state.flightsSelected.set(updatedState);
@@ -122,17 +124,17 @@ export class FlightComponent {
       const updatedState: IFlightSelected = {
         ...currentState,
         destination: {
-          id: '',
+          id: data.id,
           origin: data.route.departureAirportCode,
           destination: data.route.arrivalAirportCode,
           departure: data.route.departureTime,
           arrival: data.route.arrivalTime,
           price: data.price,
-          idPlane: ''
+          idPlane: data.idPlane
         }
       };
       this._state.flightsSelected.set(updatedState);
-      this.router.navigate(['/passenger']);
+      this.router.navigate(['/seats']);
     });
   }
 

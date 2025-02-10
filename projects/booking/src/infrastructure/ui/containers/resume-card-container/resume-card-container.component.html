@@ -1,23 +1,14 @@
 <lib-resume-card
-  title="Resumen de tu viaje"
-  idaDate="Jueves, 01 mayo 2025"
-  vueltaDate="Viernes, 16 mayo 2025"
-  [ida]="{
-    origin: 'GYE',
-    originTime: '11:05',
-    destination: 'LGW',
-    destinationTime: '09:00'
-  }"
-  [vuelta]="{
-    origin: 'LGW',
-    originTime: '17:25',
-    destination: 'GYE',
-    destinationTime: '08:50'
-  }"
-  vuelosPrice="1.107,07 USD"
-  adultoPrice="1.107,07 USD"
-  totalPrice="1.107,07 USD"
-  disclaimerText="Impuestos, recargos y descuentos incluidos en el precio final"
+  [title]="flightSumary.title"
+  [departureDate]="flightSumary.departureDate"
+  [returnDate]="flightSumary.returnDate"
+  [outboundFlight]="flightSumary.outboundFlight"
+  [returnFlight]="flightSumary.returnFlight"
+  [flightPrice]="flightSumary.flightPrice"
+  [adultTicketPrice]="flightSumary.adultTicketPrice"
+  [totalPrice]="flightSumary.totalPrice"
+  [passengers]="flightSumary.passengers"
+  [disclaimerText]="flightSumary.disclaimerText"
   (confirmClicked)="onContinue()"
 >
 </lib-resume-card>

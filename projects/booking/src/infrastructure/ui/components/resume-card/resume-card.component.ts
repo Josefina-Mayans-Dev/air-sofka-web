@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, computed, input, OnInit, output } from '@angular/core';
 import { FlightDetailComponent } from '../flight-detail/flight-detail.component';
 import { PriceRowComponent } from '../price-row/price-row.component';
 import { TotalPriceComponent } from '../total-price/total-price.component';
@@ -18,14 +18,16 @@ export interface FlightSegment {
 })
 export class ResumeCardComponent {
    title  = input<string>('Flight Resume');
-   idaDate = input<string>('');
-   vueltaDate = input<string>('');
-   ida = input<FlightSegment>({ origin: '', originTime: '', destination: '', destinationTime: '' });
-   vuelta = input<FlightSegment>({ origin: '', originTime: '', destination: '', destinationTime: '' });
-   vuelosPrice = input<string>('');
-   adultoPrice = input<string>('');
-   totalPrice = input<string>('');
+   departureDate = input<string>('');
+   returnDate = input<string>('');
+   outboundFlight = input<FlightSegment>({ origin: '', originTime: '', destination: '', destinationTime: '' });
+   returnFlight = input<FlightSegment>({ origin: '', originTime: '', destination: '', destinationTime: '' });
+   flightPrice   = input<number>(0);
+   adultTicketPrice   = input<number>(0);
+   totalPrice = input<number>(0);
    disclaimerText = input<string>('');
+   passengers = input<number>(0);
+
   
 
   confirmClicked = output<void>();

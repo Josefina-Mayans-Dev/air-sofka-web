@@ -8,20 +8,24 @@ import { UnselectSeatUseCase } from '../../../../application/seat-map/unselect-s
 import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
 import { AsyncPipe } from '@angular/common';
 import { SeatMapComponent} from '../../components/seat-map/seat-map.component';
+import { SelectSeatUseCase } from '../../../../application/select-seat.usecase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seat-map-container',
   imports: [SeatMapComponent],
   template: `
-  <lib-seat-map [flightId]="'66bf2b9b-cb42-400e-bbfe-b39c03549ced'"/>
+  <lib-seat-map [flightId]="'66bf2b9b-cb42-400e-bbfe-b39c03549ced'"  (onChoseSeat)="handleSeatSelection($event)"></lib-seat-map>
   `
 })
 
 export class SeatMapContainer implements OnInit, OnDestroy {
     private readonly _getSeatsUsecase = inject(GetSeatsUsecase);
+    private readonly _selectedSeatsUsecase = inject(SelectSeatUseCase);
     public seat$: Observable<ISeat>;
     readonly seats$ = this._getSeatsUsecase.seats$();
     readonly selectedSeats$ = this._getSeatsUsecase.selectedSeats$();
+    readonly selectedSeatsId$ = this._selectedSeatsUsecase.selectedSeatsId$();
     readonly error$ = this._getSeatsUsecase.error$();
 
 
@@ -56,8 +60,9 @@ export class SeatMapContainer implements OnInit, OnDestroy {
     this._getSeatsUsecase.execute(flightId);
   }
 
-  handleSeatSelection(seat: ISeat): void {
-    // Add select seat use case implementation here
+  handleSeatSelection(seatsId: string[]): void {
+    console.log('seat selected', seatsId);
+    this._selectedSeatsUsecase.execute(seatsId);
   }
 
   /* onSeatSelected(seatId: string): void {

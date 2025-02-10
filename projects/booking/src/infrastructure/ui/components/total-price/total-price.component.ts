@@ -7,6 +7,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './total-price.component.scss'
 })
 export class TotalPriceComponent {
-  totalPrice = input<string>('');
+  totalPrice = input<number>(0);
 
 }

@@ -1,39 +1,40 @@
 <div class="flight">
-    <section class="flight__header">
-      <h2 class="flight__title">{{ title() }}</h2>
-    </section>
-  
-    <div class="flight__flight-segment">
-      <lib-flight-detail
-        [segmentLabel]="'Ida'"
-        [date]="idaDate()"
-        [flight]="ida()"
-      ></lib-flight-detail>
-    </div>
-  
-    <div class="flight__flight-segment">
-      <lib-flight-detail
-        [segmentLabel]="'Vuelta'"
-        [date]="vueltaDate()"
-        [flight]="vuelta()"
-      ></lib-flight-detail>
-    </div>
-  
-    <div class="flight__prices">
-      <lib-price-row label="Vuelos" [price]="vuelosPrice()"></lib-price-row>
-      <lib-price-row label="1 Adulto" [price]="adultoPrice()"></lib-price-row>
-    </div>
-  
-    <div class="flight__total">
-      <lib-total-price [totalPrice]="totalPrice()"></lib-total-price>
-    </div>
-  
-    <div class="flight__disclaimer">
-      <span>{{ disclaimerText() }}</span>
-    </div>
-    <div style="padding: 16px;">
-      <button class="flight__button" (click)="onConfirmClick()">Continuar</button>
+  <section class="flight__header">
+    <h2 class="flight__title">{{ title() }}</h2>
+  </section>
 
-    </div>
-  
+  <div class="flight__flight-segment">
+    <lib-flight-detail
+      [segmentLabel]="'Go to'"
+      [date]="departureDate()"
+      [flight]="outboundFlight()"
+    ></lib-flight-detail>
   </div>
+
+  <div class="flight__flight-segment">
+    <lib-flight-detail
+      [segmentLabel]="'Return'"
+      [date]="returnDate()"
+      [flight]="returnFlight()"
+    ></lib-flight-detail>
+  </div>
+
+  <div class="flight__prices">
+    <lib-price-row label="Flights" [price]="flightPrice()"></lib-price-row>
+    <lib-price-row
+      [label]="passengers() + ' ' + 'Adult'"
+      [price]="adultTicketPrice()"
+    ></lib-price-row>
+  </div>
+
+  <div class="flight__total">
+    <lib-total-price [totalPrice]="totalPrice()"></lib-total-price>
+  </div>
+
+  <div class="flight__disclaimer">
+    <span>{{ disclaimerText() }}</span>
+  </div>
+  <div style="padding: 16px">
+    <button class="flight__button" (click)="onConfirmClick()">Continuar</button>
+  </div>
+</div>
