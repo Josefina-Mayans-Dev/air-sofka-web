@@ -31,6 +31,6 @@ export class BookingResumeLayoutComponent {
   }
 
   onDetailsClick() {
-    console.log('Details clicked');
+   
   }
 }

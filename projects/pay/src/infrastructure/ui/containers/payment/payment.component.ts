@@ -6,6 +6,7 @@ import { Observable, of, switchMap, tap } from 'rxjs';
 import { MethodPayUseCase } from '../../../../application/method-pay.usecase';
 import { IMethodPay } from '../../../../domain/model/method-pay.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-payment',
@@ -19,6 +20,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   paymentMessage: string = '';
   private headerService = inject(BookingHeaderService);
   private readonly _useCaseMethodPay = inject(MethodPayUseCase);
+  private readonly router = inject(Router);
 
   public methodPay$: Observable<IMethodPay>;
 
@@ -44,12 +46,14 @@ export class PaymentComponent implements OnInit, OnDestroy {
         .subscribe();
 
       this.paymentMessage = 'Processing payment...';
+      this.router.navigate(['/booking']);
+
       setTimeout(() => {
         this.processingPayment = false;
       }, 2000);
     } else {
       this.paymentMessage =
-        'Por favor, complete todos los campos requeridos .....';
+        'Please complete all required fields.....';
     }
   }
 }

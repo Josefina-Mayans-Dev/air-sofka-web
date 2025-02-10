@@ -45,22 +45,22 @@
   <div class="payment-form__group">
     <label class="payment-form__checkbox-label">
       <input type="checkbox" formControlName="aceptarTerminos" class="payment-form__checkbox" />
-      Acepto las Condiciones de Reserva, etc.
+      I accept the Booking Conditions, etc.
     </label>
     @if(paymentForm.get('aceptarTerminos')?.errors && paymentForm.get('aceptarTerminos')?.touched) {
-    <div class="error-message">Debe aceptar las condiciones.</div>
+    <div class="error-message">You must accept the conditions.</div>
     }
   </div>
 
   <div class="payment-form__group">
     <label class="payment-form__checkbox-label">
       <input type="checkbox" formControlName="aceptarPrivacidad" class="payment-form__checkbox" />
-      Acepto la Política de Privacidad.
+      I accept the Privacy Policy.
     </label>
     @if(paymentForm.get('aceptarPrivacidad')?.errors && paymentForm.get('aceptarPrivacidad')?.touched) {
     <div class="error-message">Debe aceptar la política.</div>
     }
   </div>
 
-  <button type="submit" class="payment-form__button" [disabled]="!paymentForm.valid">Proceder al pago</button>
+  <button type="submit" class="payment-form__button" [disabled]="!paymentForm.valid">Proccess payment</button>
 </form>

@@ -201,7 +201,6 @@ export class RegisterLayoutComponent {
         
     } else {
       this.form.markAllAsTouched();
-      console.log('Form errors:', this.form.errors);
     }
   }
 

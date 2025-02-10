@@ -97,11 +97,9 @@ export class FlightComponent {
   }
 
   onSelectedFlightIda(data: IDataCard) {
-    console.table(data);
     this.selectIda = false;
     this._state.flightsSelected.$().pipe(take(1)).subscribe(currentState => {
       currentState.filters.adults;
-      console.log(currentState.filters.adults);
       const updatedState: IFlightSelected = {
         ...currentState,
         origin: {
@@ -119,7 +117,6 @@ export class FlightComponent {
   }
 
   onSelectedFlightVuelta(data: IDataCard) {
-    console.table(data);
     this._state.flightsSelected.$().pipe(take(1)).subscribe(currentState => {
       const updatedState: IFlightSelected = {
         ...currentState,

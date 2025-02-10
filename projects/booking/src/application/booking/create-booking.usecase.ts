@@ -3,6 +3,7 @@ import { State } from "../../domain/state";
 import { BookingService } from "../../infrastructure/services/booking.service";
 import { Observable, Subscription, tap } from "rxjs";
 import { IBooking, IBookingRequest, IBookingResponse } from "../../domain/model/booking.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ import { IBooking, IBookingRequest, IBookingResponse } from "../../domain/model/
 export class CreateBookingUsecase {
   private readonly _service = inject(BookingService);
   private readonly _state = inject(State);
+  private  readonly _router = inject(Router);
   private subscriptions: Subscription;
 
   booking$(): Observable<IBookingResponse> {
@@ -33,8 +35,8 @@ export class CreateBookingUsecase {
           .pipe(
               tap({
                   next: (booking) => {
-                      console.log('Booking created:', booking);
                       this._state.booking.booking.set(booking);
+                      this._router.navigate(['']);
 
                   },
                   error: (error) => {

@@ -41,7 +41,7 @@ export class PriceBreakdownContainerComponent implements OnInit, OnDestroy {
       .selectedSeatsId$()
       .pipe(
         tap((ids) =>  this.seatsIds = ids),
-        tap(() => {console.log('ids-local', this.seatsIds)
+        tap(() => {
           this.getCostBreakdown();
         })
       )

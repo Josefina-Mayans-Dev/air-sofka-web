@@ -85,7 +85,6 @@ export class FlightCardContainerComponent implements OnInit, OnDestroy {
       ),
       tap(filteredFlights => {
         this.flights = filteredFlights.map(f => this.maptoFlightLegs(f));
-        console.log({ filteredFlights, mappedFlights: this.flights });
       })
     ).subscribe();
   }
