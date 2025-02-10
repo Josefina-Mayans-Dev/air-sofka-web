@@ -2,3 +2,6 @@
 @use '../../shared/src/infrastructure/ui/styles/base/typography';
 @use '../../shared/src/infrastructure/ui/styles/base/grid';
 @use  '../../shared/src/infrastructure/ui/styles/base/utilities';
+
+// regular style toast
+@import 'ngx-toastr/toastr';
