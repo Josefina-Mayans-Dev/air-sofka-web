@@ -57,7 +57,6 @@ export class PassengersComponent implements OnInit, OnDestroy {
   }
 
   onComplete(data: any[]) {
-    console.log('Stepper completed:', data);
     this._router.navigate(['/seats']);
 
   }
@@ -122,7 +121,6 @@ export class PassengersComponent implements OnInit, OnDestroy {
     this.listPassengers$ = this._useCasePassengerSave.getListPassengers$();
     this.flight$ = this._useCaseFlightSelected.flight$();
     this.flight$.subscribe((flight) => {
-      console.log('Vuelos:', flight.filters);
       let passengers = flight.filters?.adults;
 
       for (let i = 0; i < passengers; i++) {

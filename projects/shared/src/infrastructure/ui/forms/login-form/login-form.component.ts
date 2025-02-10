@@ -83,7 +83,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   auth() {
-    console.log(this.form.value);
+    
   }
   submitForm() {
     this.submit.emit(this.form.getRawValue());

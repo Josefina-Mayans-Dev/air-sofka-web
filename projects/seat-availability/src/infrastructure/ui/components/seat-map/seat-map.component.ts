@@ -82,24 +82,5 @@ export class SeatMapComponent implements OnInit {
     this.error = null;
 
     this.onChoseSeat.emit(this.selectedSeatsId);
-    
-    
-    return;
-    this.seatService.bookSeats(this.flightId, this.selectedSeats).subscribe({
-      next: (response) => {
-        if (response.success) {
-          this.loadSeats();
-          this.selectedSeats = [];
-        } else {
-          this.error = response.message || 'Failed to book seats';
-        }
-        this.loading = false;
-      },
-      error: (error) => {
-        this.error = 'Failed to book seats. Please try again.';
-        this.loading = false;
-        console.error('Error booking seats:', error);
-      }
-    });
   }
 }

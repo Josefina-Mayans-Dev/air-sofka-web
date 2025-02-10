@@ -84,7 +84,7 @@ export class FlightSearchFormComponent implements OnInit {
       criteria.returnDate = undefined;
     }
 
-    console.log("Criterios de búsqueda:", criteria);
+    
     this.filters.emit(criteria);
   }
 

@@ -7,6 +7,7 @@ import { combineLatest, last, map, Observable, of, switchMap, takeLast, tap } fr
 import { IBookingRequest, Passenger } from '../../../../domain/model/booking.model';
 import { GetFlightsSelectedUseCase, GetFlightsUseCase } from 'flight';
 import { CreateBookingUsecase } from '../../../../application/booking/create-booking.usecase';
+import { MethodPayUseCase } from 'pay';
 
 export interface IFlightSummary {
   title: string;
@@ -34,6 +35,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
   readonly _getCostBreakdown = inject(GetCostBreakdownUsecase);
   readonly _getFlightSelected = inject(GetFlightsSelectedUseCase);
   readonly _createBookingUseCase = inject(CreateBookingUsecase);
+  readonly _createPay = inject(MethodPayUseCase);
 
   public contactSave$: Observable<IPassengerContact>;
   public listPassengers$: Observable<IPassenger[]>;
@@ -64,7 +66,6 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
   };
 
   onContinue() {
-    console.log('Continue clicked!');
     this._createBookingUseCase.execute(this.request);
   }
 
@@ -74,6 +75,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
     this._selectedSeatsUsecase.initSubscriptions();
     this._getCostBreakdown.initSubscriptions();
     this._getFlightSelected.initSubscription();
+    this._createPay.initSubscriptions();
 
     this._createBookingUseCase.initSubscriptions();
     this.buildBookingRequest();
@@ -85,6 +87,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
     this._getCostBreakdown.destroySubscriptions();
     this._getFlightSelected.destroySubscription();
     this._createBookingUseCase.destroySubscriptions();
+    this._createPay.destroySubscriptions();
   }
 
 
@@ -96,13 +99,14 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
     const costBreakdown$ = this._getCostBreakdown.constBreadown$();
     const contact$ = this._passengerContact.passengerContact$();
     const flights$ = this._getFlightSelected.flight$();
+    const methodPay$ = this._createPay.getMethodPay$();
 
 
-    combineLatest([passengers$, seatIds$, costBreakdown$, contact$, flights$]).pipe(
-      switchMap(([passengers, seatIds, costBreakdown,  contact, flight]) => {
+    combineLatest([passengers$, seatIds$, costBreakdown$, contact$, flights$,  methodPay$]).pipe(
+      switchMap(([passengers, seatIds, costBreakdown,  contact, flight, methodPay]) => {
         if (
           !passengers || !seatIds || !costBreakdown || !contact ||
-          !passengers.length || !seatIds.length || !flight
+          !passengers.length || !seatIds.length || !flight || !methodPay
         ) {
          
           return of(null);
@@ -114,8 +118,6 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
           passengerType: 'ADULT',
           seatId: seatIds[index] || null, 
         }));
-
-        console.log(passengersWithSeats.length, "passengers");
         this.flightSumary = {
           title: 'Flight summary',
           departureDate: flight?.origin.departure,
@@ -139,7 +141,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
           passengers: passengersWithSeats.length
         };
 
-        console.log("Flight summary", this.flightSumary);
+       
   
         const request: IBookingRequest = {
           bookingStatus: 'CONFIRMED',
@@ -147,7 +149,7 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
           discount: costBreakdown?.discount,
           flightId: flight?.origin.id, 
           userId: null,
-          paymentMethod: 'TEST-PAY-METHOD',
+          paymentMethod: methodPay as any,
           email: contact?.email,
           prefix: contact?.prefix,
           phoneNumber: contact?.telephoneNumber,
@@ -169,7 +171,6 @@ export class ResumeCardContainerComponent implements OnInit, OnDestroy {
       }),
       tap(request => {
         if (request) {
-          console.log('Booking Request:', request);
 
           this.request = request;
         }
