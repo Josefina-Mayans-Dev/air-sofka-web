@@ -29,5 +29,20 @@
         color: #333;
       }
     }
+
+    &__edit-button {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
   }
 }

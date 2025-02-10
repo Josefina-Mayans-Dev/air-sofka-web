@@ -25,5 +25,8 @@
       <span class="card__details__item--label">Price:</span>
       <span>{{ flight().price | currency : "USD" : "symbol" : "1.0-2"}}</span>
     </div>
+
+    <!-- Botón de edición -->
+    <button class="card__details__edit-button" (click)="onEdit()">Edit</button>
   </div>
 </div>

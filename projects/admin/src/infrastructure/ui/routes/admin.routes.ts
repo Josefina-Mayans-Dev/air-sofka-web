@@ -7,6 +7,7 @@ import { PlanesContainerComponent } from '../containers/planes-container/planes-
 import { CreatePlaneContainerComponent } from '../containers/create-plane-container/create-plane-container.component';
 import { CreateMaintenanceContainerComponent } from '../containers/create-maintenance-container/create-maintenance-container.component';
 import { authGuard } from 'shared';
+import { UpdateFlightContainerComponent } from '../containers/update-flight-container/update-flight-container.component';
 
 export const adminRoutes: Routes = [
   {
@@ -41,6 +42,17 @@ export const adminRoutes: Routes = [
         path: 'maintenances',
         component: CreateMaintenanceContainerComponent,
       },
+    ],
+  },
+  {
+    path: 'update',
+    component: FormLayoutComponent,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'flight/:id',
+        component: UpdateFlightContainerComponent,
+      }
     ],
   },
 ];
