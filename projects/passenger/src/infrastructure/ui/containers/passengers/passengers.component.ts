@@ -9,29 +9,42 @@ import { Observable, of, switchMap, tap } from 'rxjs';
 import { IPassenger } from '../../../../domain/model/passenger.model';
 import { IPassengerContact } from '../../../../domain/model/passenger-contact.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { BookingHeaderService } from 'shared';
+import { GetFlightsUseCase, IFlight, IFlightSelected } from 'flight';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-pasajeros',
   imports: [AsyncPipe, StepperComponent, PassengerFormComponent, CommonModule],
-  templateUrl: './passengers.component.html'
+  templateUrl: './passengers.component.html',
 })
 export class PassengersComponent implements OnInit, OnDestroy {
   private readonly _useCaseContact = inject(PassengerContactUseCase);
   private readonly _useCasePassengerSave = inject(PassengerSaveUseCase);
   private readonly _useCasePassengerUpdate = inject(PassengerUpdateUseCase);
+  private readonly _useCaseFlightSelected = inject(GetFlightsUseCase);
+
+  private headerService = inject(BookingHeaderService);
   private readonly _router = inject(Router);
 
   public contactSave$: Observable<IPassengerContact>;
   public listPassengers$: Observable<IPassenger[]>;
+  public flight$: Observable<IFlightSelected>;
 
-  stepLabels = ['Adulto 1', 'Adulto 2', 'Adulto 3', 'Adulto 4', 'Adulto 5'];
+  stepLabels: string[] = [];
   currentStepIndex: number = 0;
   formData: any[] = [];
   passengerForms: FormGroup[] = [];
   isNextButtonDisabled: boolean = true;
   contact: IPassengerContact;
   passenger: IPassenger;
+
+  constructor() {
+    this.headerService.sendBookingHeader({
+      title: 'Pasajeros',
+      subtitle: 'Informacion de contacto y pasajeros',
+    });
+  }
 
   onFormReady(form: FormGroup, index: number) {
     this.passengerForms[index] = form;
@@ -41,7 +54,6 @@ export class PassengersComponent implements OnInit, OnDestroy {
   onStepChange(index: number) {
     this.currentStepIndex = index;
     this.checkIfValid(index);
-    // console.log('Step changed:', index);
   }
 
   onComplete(data: any[]) {
@@ -98,13 +110,25 @@ export class PassengersComponent implements OnInit, OnDestroy {
     this._useCaseContact.destroySubscriptions();
     this._useCasePassengerSave.destroySubscriptions();
     this._useCasePassengerUpdate.destroySubscriptions();
+    this._useCaseFlightSelected.destroySubscription();
   }
 
   ngOnInit(): void {
     this._useCaseContact.initSubscriptions();
     this._useCasePassengerSave.initSubscriptions();
     this._useCasePassengerUpdate.initSubscriptions();
+    this._useCaseFlightSelected.initSubscription();
     this.contactSave$ = this._useCaseContact.passengerContact$();
     this.listPassengers$ = this._useCasePassengerSave.getListPassengers$();
+    this.flight$ = this._useCaseFlightSelected.flight$();
+    this.flight$.subscribe((flight) => {
+      // console.log('Vuelos:', flight.filters?.adults);
+      let passengers = flight.filters?.adults;
+
+      for (let i = 0; i < passengers; i++) {
+        this.stepLabels.push(`Adulto ${i + 1}`);
+      }
+    });
+   
   }
 }

@@ -1,105 +1,66 @@
 <form [formGroup]="paymentForm" class="payment-form" (ngSubmit)="onSubmit()">
-
-    <div class="payment-form__group">
-        <label class="payment-form__label" for="metodoPago">Metodo de Pago: </label>
-        <select id="metodoPago" formControlName="metodoPago" class="payment-form__select">
-            <option value="tarjetaCredito">Tarjeta de Crédito</option>
-            <option value="paypal">PayPal</option>
-        </select>
-      @if(paymentForm.get('metodoPago')?.errors && paymentForm.get('metodoPago')?.touched) {
-        <div class="error-message">Este campo es requerido.</div>
-         }
+  <div class="grid">
+    <div class="col-12">
+      <app-dropdown [dropdownData]="metodoPagoDropdown" [formGroup]="paymentForm"> </app-dropdown>
     </div>
-    <div class="payment-form__group">
-        <label class="payment-form__label" for="correo">Correo electrónico: </label>
-        <input type="email" id="correo" formControlName="correo" class="payment-form__input" required />
-        @if(paymentForm.get('correo')?.errors && paymentForm.get('correo')?.touched) {
-        <div class="error-message">Por favor, ingrese un correo electrónico válido.</div>
-        }
-      </div>
-
-    <div class="payment-form__group">
-        <label class="payment-form__label" for="prefijoTelefono">Prefijo telefónico del país: </label>
-        <select id="prefijoTelefono" formControlName="prefijoTelefono" class="payment-form__select">
-            <option value="+593">Ecuador (+593)</option>
-            <option value="+34">España (+34)</option>
-            <option value="+93">Afganistán (+93)</option>
-            <option value="+355">Albania (+355)</option>
-            <option value="+49">Alemania (+49)</option>
-            <option value="+376">Andorra (+376)</option>
-            <option value="+244">Angola (+244)</option>
-            <option value="+1264">Anguila (+1264)</option>
-            <option value="+591">Bolivia (+591)</option>
-            <option value="+55">Brasil (+55)</option>
-            <option value="+56">Chile (+56)</option>
-            <option value="+57">Colombia (+57)</option>
-            <option value="+51">Perú (+51)</option>
-            <option value="+58">Venezuela (+58)</option>
-            <option value="+54">Argentina (+54)</option>
-            <option value="+598">Uruguay (+598)</option>
-        </select>
-        @if(paymentForm.get('prefijoTelefono')?.errors && paymentForm.get('prefijoTelefono')?.touched) {
-        <div class="error-message">Este campo es requerido.</div>
-         }
+  </div>
+  <div class="grid">
+    <div class="col-12">
+      <app-input [inputData]="correoInput" [formGroup]="paymentForm"></app-input>
     </div>
-
-    <div class="payment-form__group">
-        <label class="payment-form__label" for="numeroTelefono">Número de teléfono: </label>
-        <input type="text" id="numeroTelefono" formControlName="numeroTelefono" class="payment-form__input" required />
-      @if(paymentForm.get('numeroTelefono')?.errors && paymentForm.get('numeroTelefono')?.touched) {
-        <div class="error-message">Por favor ingrese 9 numeros y que empiecen con 9.</div>
-      }
+  </div>
+  <div class="grid">
+    <div class="col-12">
+      <app-dropdown [dropdownData]="prefijoTelefonoDropdown" [formGroup]="paymentForm"> </app-dropdown>
     </div>
+  </div>
 
-    <div class="payment-form__group">
-        <label class="payment-form__label" for="numeroTarjeta">Número de tarjeta: </label>
-        <input type="text" id="numeroTarjeta" formControlName="numeroTarjeta" class="payment-form__input" required />
-       @if(paymentForm.get('numeroTarjeta')?.errors && paymentForm.get('numeroTarjeta')?.touched) {
-          <div class="error-message">Por favor, ingrese un número de tarjeta válido (16 dígitos).</div>
-        }
+  <div class="grid">
+    <div class="col-12">
+      <app-input [inputData]="numeroTelefonoInput" [formGroup]="paymentForm"></app-input>
     </div>
+  </div>
 
-    <div class="payment-form__group">
-        <label class="payment-form__label" for="fechaCaducidadMes">Fecha de caducidad (MM/AA): </label>
-        <div class="payment-form__expiration-date">
-            <input type="text" id="fechaCaducidadMes" formControlName="fechaCaducidadMes" placeholder="MM"
-                class="payment-form__input" required/>
-            <span>/</span>
-            <input type="text" id="fechaCaducidadAnio" formControlName="fechaCaducidadAnio" placeholder="AA"
-                class="payment-form__input" required/>
-        </div>
-        @if(paymentForm.get('fechaCaducidadMes')?.errors && paymentForm.get('fechaCaducidadMes')?.touched) {
-            <div class="error-message">Por favor, ingrese una fecha de caducidad válida (MM/AA).</div>
-          }
+  <div class="grid">
+    <div class="col-12">
+      <app-input [inputData]="numeroTarjetaInput" [formGroup]="paymentForm"></app-input>
     </div>
+  </div>
 
-    <div class="payment-form__group">
-        <label class="payment-form__label" for="cvc">CVC/CVV: </label>
-        <input type="text" id="cvc" formControlName="cvc" class="payment-form__input" required />
-       @if(paymentForm.get('cvc')?.errors && paymentForm.get('cvc')?.touched) {
-          <div class="error-message">Por favor, ingrese un CVC/CVV válido (3 o 4 dígitos).</div>
-        }
+  <div class="grid">
+    <div class="col-6">
+      <app-input [inputData]="fechaCaducidadMesInput" [formGroup]="paymentForm"></app-input>
     </div>
+    <div class="col-6">
+      <app-input [inputData]="fechaCaducidadAnioInput" [formGroup]="paymentForm"></app-input>
+    </div>
+  </div>
 
-    <div class="payment-form__group">
-        <label class="payment-form__checkbox-label">
-            <input type="checkbox" formControlName="aceptarTerminos" class="payment-form__checkbox"/>
-            Acepto las Condiciones de Reserva, etc.
-        </label>
-     @if(paymentForm.get('aceptarTerminos')?.errors && paymentForm.get('aceptarTerminos')?.touched) {
-      <div class="error-message">Debe aceptar las condiciones.</div>
+  <div class="grid">
+    <div class="col-12">
+      <app-input [inputData]="cvcInput" [formGroup]="paymentForm"></app-input>
+    </div>
+  </div>
+
+  <div class="payment-form__group">
+    <label class="payment-form__checkbox-label">
+      <input type="checkbox" formControlName="aceptarTerminos" class="payment-form__checkbox" />
+      Acepto las Condiciones de Reserva, etc.
+    </label>
+    @if(paymentForm.get('aceptarTerminos')?.errors && paymentForm.get('aceptarTerminos')?.touched) {
+    <div class="error-message">Debe aceptar las condiciones.</div>
     }
-    </div>
+  </div>
 
-    <div class="payment-form__group">
-        <label class="payment-form__checkbox-label">
-            <input type="checkbox" formControlName="aceptarPrivacidad" class="payment-form__checkbox" />
-            Acepto la Política de Privacidad.
-        </label>
-        @if(paymentForm.get('aceptarPrivacidad')?.errors && paymentForm.get('aceptarPrivacidad')?.touched) {
-      <div class="error-message">Debe aceptar la política.</div>
+  <div class="payment-form__group">
+    <label class="payment-form__checkbox-label">
+      <input type="checkbox" formControlName="aceptarPrivacidad" class="payment-form__checkbox" />
+      Acepto la Política de Privacidad.
+    </label>
+    @if(paymentForm.get('aceptarPrivacidad')?.errors && paymentForm.get('aceptarPrivacidad')?.touched) {
+    <div class="error-message">Debe aceptar la política.</div>
     }
-    </div>
+  </div>
 
-    <button type="submit" class="payment-form__button" [disabled]="!paymentForm.valid">Proceder al pago</button>
+  <button type="submit" class="payment-form__button" [disabled]="!paymentForm.valid">Proceder al pago</button>
 </form>
