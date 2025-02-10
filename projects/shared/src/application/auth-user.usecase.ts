@@ -47,7 +47,13 @@ export class AuthUserUseCase {
                 localStorage.setItem('role', result.role);
                 localStorage.setItem('id', result.id);
                 this.tokenService.handleToken(result.token);
-                this.router.navigate(['/admin']);
+                if(result.role ===  'ADMIN'){
+                  this.router.navigate(['/admin']);
+
+                } else {
+                  this.router.navigate(['']);
+                  window.location.reload();
+                }
               }
             }
           })
