@@ -12,8 +12,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/shared/ng-package.json",
-            "outputPath": "dist/shared"
+            "project": "projects/shared/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -46,8 +45,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/auth/ng-package.json",
-            "outputPath": "dist/auth"
+            "project": "projects/auth/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -191,8 +189,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/seat-availability/ng-package.json",
-            "outputPath": "dist/seat-availability"
+            "project": "projects/seat-availability/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -225,9 +222,7 @@
         "build": {
           "builder": "@angular/build:ng-packagr",
           "options": {
-            "project": "projects/admin/ng-package.json",
-            "outputPath": "dist/admin"
-            
+            "project": "projects/admin/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -260,8 +255,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/passenger/ng-package.json",
-            "outputPath": "dist/passenger"
+            "project": "projects/passenger/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -294,8 +288,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/pay/ng-package.json",
-            "outputPath": "dist/pay"
+            "project": "projects/pay/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -328,8 +321,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/flight/ng-package.json",
-            "outputPath": "dist/flight"
+            "project": "projects/flight/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -362,8 +354,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/booking/ng-package.json",
-            "outputPath": "dist/booking"
+            "project": "projects/booking/ng-package.json"
           },
           "configurations": {
             "production": {
@@ -395,8 +386,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/users/ng-package.json",
-            "outputPath": "dist/users"
+            "project": "projects/users/ng-package.json"
           },
           "configurations": {
             "production": {
