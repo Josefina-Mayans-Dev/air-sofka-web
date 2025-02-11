@@ -13,8 +13,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/shared/ng-package.json",
-             "outputPath": "dist/shared",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/shared"
           },
           "configurations": {
             "production": {
@@ -48,8 +47,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/auth/ng-package.json",
-            "outputPath": "dist/auth",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/auth"
           },
           "configurations": {
             "production": {
@@ -88,7 +86,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/app",
-             "baseHref": "/air-sofka-web/",
+            "baseHref": "/air-sofka-web/",
             "index": "projects/app/src/index.html",
             "browser": "projects/app/src/main.ts",
             "polyfills": [
@@ -194,8 +192,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/seat-availability/ng-package.json",
-            "outputPath": "dist/seat-availability",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/seat-availability"
           },
           "configurations": {
             "production": {
@@ -229,8 +226,7 @@
           "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/admin/ng-package.json",
-            "outputPath": "dist/admin",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/admin"
             
           },
           "configurations": {
@@ -265,8 +261,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/passenger/ng-package.json",
-            "outputPath": "dist/passenger",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/passenger"
           },
           "configurations": {
             "production": {
@@ -300,8 +295,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/pay/ng-package.json",
-            "outputPath": "dist/pay",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/pay"
           },
           "configurations": {
             "production": {
@@ -335,8 +329,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/flight/ng-package.json",
-            "outputPath": "dist/flight",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/flight"
           },
           "configurations": {
             "production": {
@@ -370,8 +363,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/booking/ng-package.json",
-            "outputPath": "dist/booking",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/booking"
           },
           "configurations": {
             "production": {
@@ -404,8 +396,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "project": "projects/users/ng-package.json",
-            "outputPath": "dist/users",
-             "baseHref": "/air-sofka-web/"
+            "outputPath": "dist/users"
           },
           "configurations": {
             "production": {
