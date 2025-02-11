@@ -31,7 +31,7 @@ jobs:
         run: npm run build:libs
 
       - name: Build Angular App
-        run: ng build app --configuration=production --output-path=dist/app
+        run: ng build app --configuration=production --output-path=dist/app --base-href="/air-sofka-web/"
 
       - name: Debug - List files after build
         run: ls -R dist/
