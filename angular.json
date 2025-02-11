@@ -83,8 +83,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/app",
-            "baseHref": "/air-sofka-web/",
+            "outputPath": "dist/app"
             "index": "projects/app/src/index.html",
             "browser": "projects/app/src/main.ts",
             "polyfills": [
