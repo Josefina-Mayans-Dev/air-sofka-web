@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Build Angular App
-        run: npm run build:libs
+        run: npm run build:libs -- --"baseHref":"/air-sofka-web/",
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
