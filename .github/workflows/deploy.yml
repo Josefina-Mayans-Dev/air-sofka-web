@@ -24,8 +24,14 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Angular App
+      - name: Build Libraries
         run: npm run build:libs
+
+      - name: Build Angular App
+        run: ng build app --configuration=production --output-path=dist/app
+
+      - name: Debug - List files after build
+        run: ls -R dist/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
