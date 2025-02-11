@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Build Angular App
-        run: ng build shared && ng build flight && ng build admin && ng build auth && ng build users && ng build passenger && ng build pay && ng build seat-availability && ng build booking --output-path=dist --base-href "/air-sofka-web/"
+        run: npm run build:libs -- --output-path=dist --base-href "/air-sofka-web/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
